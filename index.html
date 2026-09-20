@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QEUNOVA — Dermatological skincare, Egypt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --ink:#12110F; --ink2:#0B0A09; --line:#2A2419;
+  --gold:#C9A24B; --goldD:#8A6A1F; --goldL:#E0CFA4;
+  --cream:#F7F4EE; --cream2:#F4F0E7; --card:#FFFFFF;
+  --lineL:#E4DCCD; --lineL2:#EAE4D9; --field:#DDD4C4;
+  --text:#1B1815; --body:#4A443C; --muted:#6E675E; --muted2:#8C857B;
+  --dim:#A79E90; --dim2:#8A8276; --dim3:#6F685D;
+  --serif:'Marcellus',Georgia,'Times New Roman',serif;
+  --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --pad: 72px;
+  box-sizing:border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);background:var(--cream);color:var(--text);font-size:16px;line-height:1.5}
+img{max-width:100%}
+a{color:var(--goldD);text-decoration:none}
+a:hover{color:#6F5416}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.15}
+button{font-family:var(--sans)}
+input,select,textarea{font-family:var(--sans);font-size:15px;color:#2A2724}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- header ---------- */
+.announce{background:var(--ink2);color:#9E9589;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:14px 20px}
+.hdr{background:var(--ink);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:40}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;height:88px}
+.logo{display:flex;align-items:center;gap:16px}
+.mono{width:44px;height:44px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--gold)}
+.word{font-family:var(--serif);font-size:21px;letter-spacing:.34em;color:#F4EFE6}
+.nav{display:flex;align-items:center;gap:36px;font-size:14px;letter-spacing:.06em}
+.nav a{color:#D9D2C6}
+.nav a:hover,.nav a.on{color:var(--gold)}
+.icons{display:flex;align-items:center;gap:4px}
+.ico{width:44px;height:44px;background:none;border:none;color:#D9D2C6;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.ico:hover{color:var(--gold)}
+.bdg{position:absolute;top:4px;right:2px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--gold);color:var(--ink);font-size:10px;display:flex;align-items:center;justify-content:center}
+.burger{display:none}
+
+/* ---------- drawer ---------- */
+.drawer{position:fixed;inset:0;background:var(--ink);z-index:60;display:none;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.drawer.open{display:flex}
+.drawer-top{height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+.drawer-body{flex:1;overflow-y:auto;padding:24px 20px}
+.drawer-body .big{display:flex;align-items:center;justify-content:space-between;height:52px;border-bottom:1px solid #241F18;font-family:var(--serif);font-size:22px;color:#F4EFE6}
+.dlabel{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:26px 0 14px}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dgrid a{height:58px;border:1px solid #241F18;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#E7E0D4;font-size:13px;text-align:center;line-height:1.2}
+.dgrid a span{font-size:10px;color:var(--dim3)}
+
+/* ---------- sections ---------- */
+.dark{background:var(--ink);color:#F4EFE6}
+.light{background:var(--card)}
+.sand{background:var(--cream)}
+.sec{padding:72px 0}
+.sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:28px}
+.sec-head h2{font-size:36px;color:var(--text)}
+.crumb{font-size:12px;color:var(--dim3);padding:0}
+.crumb a{color:var(--dim3)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.page-head{padding:64px 0 56px}
+.page-head h1{font-size:52px;color:#F4EFE6;margin:14px 0 0}
+.page-head p{color:var(--dim);font-size:16px;line-height:1.7;margin:14px 0 0;max-width:660px}
+
+/* ---------- hero ---------- */
+.hero{display:flex;align-items:center;gap:72px;padding:88px 0}
+.hero-txt{flex:1 1 560px;display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero h1{font-size:62px;color:#F4EFE6}
+.hero p{margin:0;font-size:17px;line-height:1.7;color:#B4ABA0;max-width:520px}
+.hero-art{flex:0 0 520px;height:452px;border:1px solid var(--line);background:#171613;display:flex;align-items:center;justify-content:center;gap:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;padding-top:6px}
+
+/* ---------- buttons ---------- */
+.btn{height:54px;padding:0 34px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:.12em;text-transform:uppercase;border:1px solid transparent;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:#D8B25A;color:var(--ink)}
+.btn-ghost{border-color:#4A4234;color:#E7E0D4;background:none}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-gold-o{border-color:var(--gold);color:var(--gold);background:none}
+.btn-gold-o:hover{background:var(--gold);color:var(--ink)}
+.btn-ink{background:var(--ink);color:#F4EFE6;border-color:var(--ink)}
+.btn-ink:hover{background:#000;color:#F4EFE6}
+.btn-ink-o{border-color:var(--ink);color:var(--ink);background:none}
+.btn-ink-o:hover{background:var(--ink);color:#F4EFE6}
+.btn-full{width:100%}
+
+/* ---------- strips ---------- */
+.strip{background:var(--ink2);border-top:1px solid #241F18;border-bottom:1px solid #241F18;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
+.strip div{padding:32px 16px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;color:var(--dim)}
+.strip div+div{border-left:1px solid #241F18}
+
+/* ---------- grids ---------- */
+.g5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+
+/* ---------- cards ---------- */
+.brand-tile{border:1px solid var(--lineL);background:var(--card);min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:22px 14px;text-align:center}
+.brand-tile:hover{border-color:var(--ink)}
+.brand-tile .bn{font-family:var(--serif);font-size:20px;color:var(--text)}
+.brand-tile .bc{font-size:12px;color:var(--muted)}
+.brand-tile .bt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--goldD);border-top:1px solid var(--lineL);padding-top:9px;margin-top:3px}
+
+.pcard{border:1px solid var(--lineL2);background:var(--card);display:flex;flex-direction:column}
+.pcard:hover{border-color:var(--ink)}
+.pshot{aspect-ratio:4/3.4;background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative}
+.pshot.hist{background:var(--cream2)}
+.save{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--gold);font-size:10px;letter-spacing:.1em;padding:5px 9px}
+.pbody{padding:18px;display:flex;flex-direction:column;gap:7px;flex:1}
+.pbrand{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--goldD)}
+.pname{font-size:15px;line-height:1.4;color:var(--text)}
+.psize{font-size:12px;color:var(--muted2)}
+.price{display:flex;align-items:baseline;gap:10px;margin-top:auto;flex-wrap:wrap}
+.was{font-size:13px;color:var(--muted2);text-decoration:line-through}
+.now{font-family:var(--serif);font-size:19px;color:var(--text)}
+
+/* ---------- collection ---------- */
+.coll{display:flex;gap:56px;padding:48px 0 72px;align-items:flex-start}
+.side{flex:0 0 280px}
+.fgroup{border-top:1px solid var(--lineL);padding-top:22px;margin-top:22px;display:flex;flex-direction:column;gap:12px}
+.fgroup h3{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.frow{display:flex;align-items:center;gap:11px;min-height:32px;font-size:14px;color:#2A2724}
+.frow input{width:16px;height:16px;accent-color:var(--gold)}
+.frow .n{margin-left:auto;font-size:12px;color:#9A9184}
+.field{height:50px;width:100%;border:1px solid var(--field);background:var(--card);padding:0 13px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--lineL);padding-bottom:16px;margin-bottom:28px;flex-wrap:wrap}
+.mfilter{display:none;gap:10px}
+
+/* ---------- product ---------- */
+.pdp{display:flex;gap:64px;padding:56px 0;align-items:flex-start}
+.gal{flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.gmain{aspect-ratio:1/0.9;background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative}
+.gmain.hist{background:var(--cream2)}
+.thumbs{display:flex;gap:16px}
+.thumb{width:88px;height:88px;background:var(--cream);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.thumb.on{border-color:var(--ink)}
+.pinfo{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.pinfo h1{font-size:40px;color:var(--text);line-height:1.15}
+.pricebox{border-top:1px solid var(--lineL2);border-bottom:1px solid var(--lineL2);padding:22px 0;display:flex;flex-direction:column;gap:10px}
+.big-now{font-family:var(--serif);font-size:38px;color:var(--text)}
+.big-was{font-size:17px;color:var(--muted2);text-decoration:line-through}
+.chip{font-size:12px;letter-spacing:.1em;color:var(--goldD);border:1px solid var(--goldL);padding:5px 10px}
+.stock{display:flex;align-items:center;gap:9px;font-size:14px;color:#2A7A4B}
+.qty{display:flex;align-items:center;border:1px solid var(--field);height:56px;background:var(--card)}
+.qty button{width:48px;height:54px;background:none;border:none;font-size:20px;color:#2A2724;cursor:pointer}
+.qty span{width:44px;text-align:center;font-size:16px}
+.trust{background:var(--cream);border:1px solid var(--lineL);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.trust div{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:#2A2724;line-height:1.5}
+.trust svg{flex:0 0 auto;margin-top:2px}
+.details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px}
+.details h2{font-size:24px;margin-bottom:16px}
+.details p{margin:0 0 16px;font-size:15px;line-height:1.8;color:var(--body)}
+.step{display:flex;gap:14px;margin-bottom:14px}
+.num{width:26px;height:26px;flex:0 0 auto;border:1px solid #D6CBB4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--goldD)}
+.ing{border-bottom:1px solid var(--lineL);padding-bottom:12px;margin-bottom:12px}
+.ing b{display:block;font-weight:400;font-size:15px;color:var(--text)}
+.ing span{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ---------- cart / checkout ---------- */
+.two{display:flex;gap:56px;padding:56px 0;align-items:flex-start}
+.col-main{flex:1 1 560px;min-width:0}
+.col-side{flex:0 0 400px}
+.panel{background:var(--card);border:1px solid var(--lineL);padding:30px;display:flex;flex-direction:column;gap:16px}
+.panel h2{font-size:24px}
+.line{display:flex;justify-content:space-between;font-size:15px;color:var(--body)}
+.line.gold{color:var(--goldD)}
+.total{border-top:1px solid var(--lineL);padding-top:16px;display:flex;justify-content:space-between;align-items:baseline}
+.total b{font-family:var(--serif);font-size:28px;font-weight:400}
+.citem{display:flex;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--lineL)}
+.cthumb{width:104px;height:104px;flex:0 0 auto;background:var(--card);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld label{font-size:13px;color:var(--body)}
+.fld input,.fld select,.fld textarea{height:52px;border:1px solid var(--field);background:var(--card);padding:0 14px}
+.fld textarea{height:auto;padding:12px 14px;resize:vertical}
+.pay{border:1px solid var(--ink);background:var(--card);padding:24px 26px;display:flex;align-items:flex-start;gap:16px}
+.pay input{width:18px;height:18px;margin-top:3px;accent-color:var(--ink)}
+.steps-bar{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim3)}
+.steps-bar .on{color:var(--gold)}
+
+/* ---------- misc ---------- */
+.stat{display:flex;flex-direction:column;gap:4px}
+.stat b{font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:400}
+.stat span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8E867A}
+.band{display:flex;align-items:center;justify-content:space-between;gap:48px;padding:72px 0}
+.band h2{font-size:46px;color:#F4EFE6;margin-bottom:18px}
+.band p{color:#B4ABA0;font-size:16px;line-height:1.75;margin:0 0 24px;max-width:520px}
+.center-band{text-align:center;padding:80px 20px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.center-band h2{font-size:34px;color:#F4EFE6}
+.center-band p{color:#8E867A;font-size:15px;line-height:1.7;max-width:540px;margin:0}
+.timeline{display:flex;gap:20px;align-items:flex-start;margin-bottom:22px}
+.dot{width:34px;height:34px;flex:0 0 auto;border-radius:17px;display:flex;align-items:center;justify-content:center}
+.dot.done{background:var(--ink);border:1px solid var(--ink)}
+.dot.todo{background:var(--card);border:1px solid var(--field)}
+.acc{background:var(--card);border:1px solid var(--lineL);padding:18px;margin-bottom:14px}
+.acc h3{font-size:19px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.acc p{margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--body)}
+.helpnav{flex:0 0 240px;display:flex;flex-direction:column}
+.helpnav a{padding:13px 0;font-size:15px;color:var(--body);border-bottom:1px solid var(--lineL)}
+.helpnav a:last-child{border-bottom:none}
+.hcard{background:var(--card);border:1px solid var(--lineL);padding:22px;display:flex;flex-direction:column;gap:7px}
+.hcard b{font-family:var(--serif);font-size:24px;font-weight:400}
+.confirm{max-width:780px;margin:0 auto;background:var(--card);border:1px solid var(--lineL);padding:52px 56px;display:flex;flex-direction:column;gap:26px}
+.ring{width:68px;height:68px;border:1px solid var(--gold);border-radius:34px;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.meta3{border-top:1px solid var(--lineL);border-bottom:1px solid var(--lineL);padding:26px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.meta3 span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:6px}
+.meta3 b{font-family:var(--serif);font-size:21px;font-weight:400}
+.note{background:var(--cream);border:1px solid var(--lineL);padding:18px 22px;display:flex;align-items:center;gap:12px;font-size:14px;color:#2A2724}
+.pager{display:flex;justify-content:center;gap:10px;margin-top:40px}
+.pager a,.pager span{min-width:44px;height:44px;padding:0 16px;border:1px solid var(--field);display:flex;align-items:center;justify-content:center;font-size:14px;color:#2A2724}
+.pager .on{background:var(--ink);border-color:var(--ink);color:#F4EFE6}
+
+/* ---------- footer ---------- */
+.ftr{background:var(--ink2);border-top:1px solid #241F18;padding:64px 0 0}
+.ftr-in{display:flex;gap:96px;flex-wrap:wrap}
+.ftr-brand{flex:0 0 340px}
+.ftr-brand p{font-size:14px;line-height:1.75;color:var(--dim2);margin:18px 0 0}
+.fcol{display:flex;flex-direction:column;gap:13px}
+.fcol .h{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.fcol a{font-size:14px;color:var(--dim2)}
+.fcol a:hover{color:var(--gold)}
+.nlwrap{flex:1 1 280px;display:flex;flex-direction:column;gap:13px;min-width:260px}
+.nlrow{display:flex}
+.nlrow input{height:48px;flex:1;background:var(--ink);border:1px solid #241F18;color:#E7E0D4;padding:0 14px;min-width:0}
+.nlrow button{height:48px;padding:0 22px;background:var(--gold);border:none;color:var(--ink);font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.ftr-bot{margin-top:48px;border-top:1px solid #241F18;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;color:var(--dim3);flex-wrap:wrap}
+
+/* ---------- mobile bar ---------- */
+.mbar{display:none;position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--lineL);padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));align-items:center;gap:14px;z-index:50}
+.mbar .p{display:flex;flex-direction:column;line-height:1.2}
+.mbar .p small{font-size:11px;color:var(--muted2);text-decoration:line-through}
+.mbar .p b{font-family:var(--serif);font-size:20px;font-weight:400}
+.mbar a.btn{flex:1;height:52px;padding:0 16px}
+
+/* ---------- breakpoints ---------- */
+@media (max-width:1100px){
+  :root{--pad:40px}
+  .g5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero{gap:40px}
+  .hero h1{font-size:50px}
+  .hero-art{flex-basis:400px;height:380px}
+  .details{gap:32px}
+  .two,.coll{gap:32px}
+}
+@media (max-width:900px){
+  .nav{display:none}
+  .burger{display:flex}
+  .hdr-in{height:64px}
+  .word{font-size:17px;letter-spacing:.28em}
+  .mono{width:38px;height:38px;font-size:19px}
+  .hero{flex-direction:column;align-items:stretch;padding:40px 0}
+  .hero-art{flex-basis:auto;height:300px;order:-1}
+  .hero h1{font-size:40px}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .strip{grid-template-columns:1fr}
+  .strip div+div{border-left:none;border-top:1px solid #241F18}
+  .pdp{flex-direction:column;padding:28px 0}
+  .details{grid-template-columns:1fr;gap:36px}
+  .two{flex-direction:column}
+  .col-side{flex:1 1 auto;width:100%}
+  .coll{flex-direction:column}
+  .side{display:none}
+  .mfilter{display:flex}
+  .band{flex-direction:column;align-items:flex-start;gap:32px;padding:48px 0}
+  .band h2{font-size:34px}
+  .page-head h1{font-size:38px}
+  .sec{padding:40px 0}
+  .sec-head h2{font-size:28px}
+  .ftr-in{gap:40px}
+  .ftr-brand{flex:1 1 100%}
+  .confirm{padding:32px 24px}
+  .meta3{grid-template-columns:1fr;gap:18px}
+  .citem{gap:14px}
+  .cthumb{width:80px;height:80px}
+}
+@media (max-width:640px){
+  :root{--pad:20px}
+  .g5{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .g4,.g3{gap:12px}
+  .hero h1{font-size:34px}
+  .pinfo h1{font-size:28px}
+  .big-now{font-size:30px}
+  .price{flex-direction:column;align-items:flex-start;gap:2px}
+  .pbody{padding:12px}
+  .pname{font-size:13px}
+  .now{font-size:17px}
+  .was{font-size:11px}
+  .brand-tile{min-height:116px;padding:16px 10px;gap:6px}
+  .brand-tile .bn{font-size:16px}
+  .cta-row .btn{width:100%}
+  .thumbs .thumb{width:64px;height:64px}
+  body.has-bar{padding-bottom:88px}
+  .mbar.show{display:flex}
+  .ftr-bot{flex-direction:column;align-items:flex-start;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">100% authentic &middot; Cash on delivery across Egypt &middot; Free delivery over EGP 1,500</div>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <button class="ico burger" id="burger" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <a class="logo" href="#/">
+      <span class="mono">Q</span>
+      <span class="word">QEUNOVA</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#/brands">Brands</a>
+      <a href="#/collection/cerave">Best Sellers</a>
+      <a href="#/histomer">Histomer</a>
+      <a href="#/about">About</a>
+      <a href="#/help">Help</a>
+    </nav>
+    <div class="icons">
+      <button class="ico" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+      </button>
+      <a class="ico" href="#/track" aria-label="Track my order">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+      </a>
+      <a class="ico" href="#/cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 8h14l-1.3 12H6.3L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="bdg" id="cartBadge">3</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-top">
+    <button class="ico" id="closeDrawer" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <span class="word" style="font-size:16px">QEUNOVA</span>
+    <span style="width:44px"></span>
+  </div>
+  <div class="drawer-body">
+    <a class="big" href="#/collection/cerave">Best sellers <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6F685D" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a class="big" href="#/brands">All brands <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6F685D" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
+    <div class="dlabel">Brand collections</div>
+    <div class="dgrid" id="drawerBrands"></div>
+    <div style="margin-top:28px;padding-top:22px;border-top:1px solid #241F18;display:flex;justify-content:space-between">
+      <a href="#/track" style="color:#8A8276;font-size:14px">Track order</a>
+      <a href="#/help" style="color:#8A8276;font-size:14px">Help</a>
+      <a href="#/about" style="color:#8A8276;font-size:14px">About</a>
+    </div>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-in">
+      <div class="ftr-brand">
+        <a class="logo" href="#/"><span class="mono" style="width:40px;height:40px;font-size:20px">Q</span><span class="word" style="font-size:18px">QEUNOVA</span></a>
+        <p>Dermatological skincare for Egypt. Authentic brands, honest pricing, cash on delivery.</p>
+      </div>
+      <div class="fcol">
+        <span class="h">Shop</span>
+        <a href="#/brands">All brands</a>
+        <a href="#/collection/cerave">Best sellers</a>
+        <a href="#/histomer">Histomer</a>
+        <a href="#/cart">Your cart</a>
+      </div>
+      <div class="fcol">
+        <span class="h">Help</span>
+        <a href="#/help">Delivery &amp; returns</a>
+        <a href="#/track">Track my order</a>
+        <a href="#/help">Authenticity</a>
+        <a href="#/about">About us</a>
+      </div>
+      <div class="nlwrap">
+        <span class="h" style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)">Newsletter</span>
+        <label for="nl" style="font-size:14px;color:var(--dim2);line-height:1.6">Routine advice and restock alerts.</label>
+        <div class="nlrow">
+          <input id="nl" type="email" placeholder="Email address">
+          <button type="button">Join</button>
+        </div>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>&copy; 2026 QEUNOVA. All rights reserved.</span>
+      <span style="letter-spacing:.14em;text-transform:uppercase">Cash on delivery only</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ========== DATA — replace with real Shopify data later ========== */
+
+  var BRANDS = [
+    { slug:'cerave',   name:'CeraVe',          count:24, tag:'Up to 26% off', blurb:'Developed with dermatologists. Ceramide-based cleansers and moisturisers for barrier repair — the everyday workhorse of most routines.' },
+    { slug:'lrp',      name:'La Roche-Posay',  count:31, tag:'Up to 25% off', blurb:'French pharmacy skincare built around thermal spring water, for sensitive and reactive skin.' },
+    { slug:'vichy',    name:'Vichy',           count:19, tag:'Up to 25% off', blurb:'Mineral-rich formulas for hydration, ageing and pigmentation concerns.' },
+    { slug:'eucerin',  name:'Eucerin',         count:22, tag:'Up to 25% off', blurb:'German dermocosmetics with a strong urea and thiamidol range for dryness and dark spots.' },
+    { slug:'bioderma', name:'Bioderma',        count:16, tag:'Up to 25% off', blurb:'Micellar cleansing and atopic skin care, led by the Sensibio and Atoderm lines.' },
+    { slug:'avene',    name:'Avène',           count:18, tag:'Up to 24% off', blurb:'Thermal spring water formulas for soothing irritated and post-procedure skin.' },
+    { slug:'uriage',   name:'Uriage',          count:12, tag:'Up to 24% off', blurb:'Isotonic thermal water skincare for hydration and barrier support.' },
+    { slug:'svr',      name:'SVR',             count:14, tag:'Up to 25% off', blurb:'Concentrated actives at accessible prices, strong on blemish-prone skin.' },
+    { slug:'isdin',    name:'ISDIN',           count:11, tag:'Up to 25% off', blurb:'Spanish sun care and photoprotection, including the Fusion Water range.' },
+    { slug:'sesderma', name:'Sesderma',        count:15, tag:'Up to 24% off', blurb:'Liposomal delivery technology across peels, serums and pigmentation care.' }
+  ];
+
+  var HOUSE = { slug:'histomer', name:'Histomer', count:28, tag:'The house brand',
+    blurb:'Italian professional cosmeceuticals, formulated for clinic protocols and sold direct. Peels, boosters, repair creams and post-procedure care.' };
+
+  // shape: [bodyW, bodyH, capW, capH, radius] — drives the line-drawn stand-in image
+  var P = [
+    ['cerave','Moisturising Cream','454 ml',1450,1090,[62,54,66,12,4]],
+    ['cerave','Foaming Facial Cleanser','473 ml',1180,890,[46,104,18,24,5]],
+    ['cerave','Hydrating Facial Cleanser','236 ml',860,650,[44,92,18,22,5]],
+    ['cerave','SA Smoothing Cleanser','236 ml',980,745,[44,92,18,22,5]],
+    ['cerave','Moisturising Lotion','355 ml',1290,960,[46,98,18,26,4]],
+    ['cerave','AM Facial Lotion SPF 30','52 ml',1380,1040,[40,88,20,12,5]],
+    ['cerave','Resurfacing Retinol Serum','30 ml',1540,1150,[38,84,14,32,3]],
+    ['cerave','Blemish Control Gel','40 ml',1120,850,[38,96,20,10,6]],
+    ['cerave','Eye Repair Cream','14 ml',990,760,[34,76,16,10,6]],
+    ['cerave','Cream-to-Foam Cleanser','236 ml',1020,780,[44,92,18,22,5]],
+    ['cerave','Healing Ointment','85 g',640,490,[40,88,22,10,6]],
+    ['cerave','Baby Wash &amp; Shampoo','237 ml',720,545,[46,96,18,22,5]],
+    ['lrp','Effaclar Duo+ M','40 ml',1690,1290,[40,102,22,10,6]],
+    ['lrp','Anthelios UVMune 400 SPF 50+','50 ml',1950,1470,[40,92,20,12,5]],
+    ['lrp','Cicaplast Baume B5+','40 ml',980,745,[38,96,20,10,6]],
+    ['lrp','Hyalu B5 Serum','30 ml',3200,2390,[38,84,14,32,3]],
+    ['lrp','Toleriane Caring Wash','400 ml',1180,895,[46,104,18,24,5]],
+    ['vichy','Minéral 89 Booster','50 ml',1780,1340,[40,86,14,34,3]],
+    ['vichy','Liftactiv Vitamin C Serum','20 ml',2450,1840,[36,80,14,30,3]],
+    ['vichy','Capital Soleil UV-Age SPF 60','40 ml',1690,1270,[40,90,20,12,5]],
+    ['vichy','Dercos Anti-Dandruff Shampoo','390 ml',890,675,[46,100,18,24,5]],
+    ['eucerin','Hyaluron-Filler Day SPF 30','50 ml',2150,1620,[58,58,62,12,4]],
+    ['eucerin','Anti-Pigment Dual Serum','30 ml',2480,1860,[38,84,14,32,3]],
+    ['eucerin','UreaRepair Plus Lotion 10%','250 ml',1150,870,[46,100,18,24,5]],
+    ['eucerin','Sun Oil Control SPF 50+','50 ml',1420,1080,[40,90,20,12,5]],
+    ['bioderma','Sensibio H2O Micellar Water','500 ml',1290,970,[46,104,18,26,4]],
+    ['bioderma','Atoderm Intensive Baume','500 ml',1650,1240,[58,58,62,12,4]],
+    ['avene','Thermal Spring Water','300 ml',780,590,[40,100,16,24,20]],
+    ['avene','Cicalfate+ Repair Cream','40 ml',1090,820,[38,96,20,10,6]],
+    ['uriage','Bariéderm Cica-Daily Gel','40 ml',1120,860,[38,96,20,10,6]],
+    ['uriage','Eau Thermale Water Cream','40 ml',1250,950,[56,56,60,12,4]],
+    ['svr','Sebiaclear Gel Moussant','400 ml',1180,890,[46,100,18,22,5]],
+    ['svr','Cicavit+ Repair Cream','40 ml',1060,810,[38,94,20,10,6]],
+    ['isdin','Fusion Water Magic SPF 50+','50 ml',2290,1720,[40,96,20,12,5]],
+    ['isdin','Isdinceutics Melatonik Serum','30 ml',3400,2550,[38,84,14,32,3]],
+    ['sesderma','C-Vit Liposomal Serum','30 ml',2150,1610,[38,84,14,32,3]],
+    ['sesderma','Azelac RU Depigmenting Serum','30 ml',2480,1860,[38,84,14,32,3]]
+  ];
+
+  var H = [
+    ['Bio Repair Cream','Hi-Repair','50 ml',2400,[58,56,62,12,4]],
+    ['Vitamin C Booster Serum','Hi-Bright','30 ml',2650,[38,84,14,32,3]],
+    ['Hyaluronic Sheet Mask','Hi-Hydra','Box of 5',1950,[66,48,70,10,3]],
+    ['Protective Fluid SPF 50+','Hi-Sun','50 ml',2200,[40,92,20,12,5]],
+    ['Glyco Peel Solution','Hi-Peel','50 ml',2850,[40,90,16,26,3]],
+    ['Eye Contour Complex','Hi-Repair','15 ml',2100,[34,74,16,10,6]],
+    ['Purifying Cleansing Gel','Hi-Clean','200 ml',1750,[44,98,18,22,5]],
+    ['Retinol Night Complex','Hi-Renew','30 ml',2950,[38,82,14,30,3]],
+    ['Barrier Repair Balm','Hi-Repair','50 ml',2050,[40,92,22,10,6]]
+  ];
+
+  var CART = [
+    { id:'cerave-0', qty:1 },
+    { id:'histomer-0', qty:1 },
+    { id:'vichy-0', qty:2 }
+  ];
+
+  /* ========== build product objects ========== */
+
+  var brandBySlug = {};
+  BRANDS.concat([HOUSE]).forEach(function (b) { brandBySlug[b.slug] = b; });
+
+  var PRODUCTS = [];
+  var perBrand = {};
+  P.forEach(function (r) {
+    var slug = r[0];
+    perBrand[slug] = (perBrand[slug] || 0);
+    var p = {
+      id: slug + '-' + perBrand[slug]++,
+      brandSlug: slug,
+      brand: brandBySlug[slug].name,
+      name: r[1], size: r[2],
+      was: r[3], now: r[4],
+      shape: r[5], house: false
+    };
+    p.save = Math.round((1 - p.now / p.was) * 100);
+    PRODUCTS.push(p);
+  });
+  H.forEach(function (r, i) {
+    PRODUCTS.push({
+      id: 'histomer-' + i, brandSlug:'histomer', brand:'Histomer',
+      name: r[0], line: r[1], size: r[2], now: r[3], was: null, save: null,
+      shape: r[4], house: true
+    });
+  });
+
+  var byId = {};
+  PRODUCTS.forEach(function (p) { byId[p.id] = p; });
+  function ofBrand(slug) { return PRODUCTS.filter(function (p) { return p.brandSlug === slug; }); }
+
+  /* ========== helpers ========== */
+
+  function egp(n) { return 'EGP ' + n.toLocaleString('en-US'); }
+  function esc(s) { return String(s); }
+
+  function shot(shape, size, stroke) {
+    var bw = shape[0], bh = shape[1], cw = shape[2], ch = shape[3], br = shape[4];
+    var bx = (120 - bw) / 2, by = 150 - bh;
+    var cx = (120 - cw) / 2, cy = by - ch;
+    var ly = by + Math.round(bh * 0.45);
+    return '<svg width="' + size + '" height="' + Math.round(size * 1.33) + '" viewBox="0 0 120 160" fill="none" stroke="' + (stroke || '#B9AD95') + '" stroke-width="2" aria-hidden="true">' +
+      '<rect x="' + cx + '" y="' + cy + '" width="' + cw + '" height="' + ch + '" rx="2"/>' +
+      '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + bh + '" rx="' + br + '"/>' +
+      '<line x1="' + (bx + 9) + '" y1="' + ly + '" x2="' + (bx + bw - 9) + '" y2="' + ly + '"/></svg>';
+  }
+
+  function tick(c, w) { return '<svg width="' + (w || 16) + '" height="' + (w || 16) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.7" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'; }
+  function iconCash(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="3"/></svg>'; }
+  function iconTruck(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>'; }
+  function iconShield(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>'; }
+  function stars() { return '<svg width="94" height="18" viewBox="0 0 100 20" fill="#C9A24B" aria-hidden="true"><circle cx="8" cy="10" r="4"/><circle cx="28" cy="10" r="4"/><circle cx="48" cy="10" r="4"/><circle cx="68" cy="10" r="4"/><circle cx="88" cy="10" r="4"/></svg>'; }
+
+  function priceBlock(p) {
+    if (p.house) return '<div class="price"><span class="now">' + egp(p.now) + '</span></div>';
+    return '<div class="price"><span class="was">' + egp(p.was) + '</span><span class="now">' + egp(p.now) + '</span></div>';
+  }
+
+  function card(p) {
+    return '<a class="pcard" href="#/product/' + p.id + '">' +
+      '<div class="pshot' + (p.house ? ' hist' : '') + '">' +
+        (p.house ? '' : '<span class="save">&minus;' + p.save + '%</span>') +
+        shot(p.shape, 96, p.house ? '#B0A288' : '#B9AD95') +
+      '</div>' +
+      '<div class="pbody">' +
+        '<span class="pbrand">' + p.brand + (p.house ? ' &middot; ' + p.line : '') + '</span>' +
+        '<span class="pname">' + p.name + '</span>' +
+        '<span class="psize">' + p.size + '</span>' +
+        priceBlock(p) +
+      '</div></a>';
+  }
+
+  function brandTile(b) {
+    return '<a class="brand-tile" href="#/collection/' + b.slug + '">' +
+      '<span class="bn">' + b.name + '</span>' +
+      '<span class="bc">' + b.count + ' products</span>' +
+      '<span class="bt">' + b.tag + '</span></a>';
+  }
+
+  function cartLines() {
+    return CART.map(function (c) {
+      var p = byId[c.id];
+      return { p: p, qty: c.qty, total: p.now * c.qty, wasTotal: p.was ? p.was * c.qty : null };
+    });
+  }
+  function cartTotals() {
+    var lines = cartLines(), sub = 0, saved = 0;
+    lines.forEach(function (l) { sub += l.total; if (l.wasTotal) saved += l.wasTotal - l.total; });
+    return { lines: lines, sub: sub, saved: saved, count: lines.reduce(function (a, l) { return a + l.qty; }, 0) };
+  }
+  function refreshBadge() {
+    document.getElementById('cartBadge').textContent = cartTotals().count;
+  }
+
+  /* ========== shared page pieces ========== */
+
+  function crumb(parts) {
+    return '<div class="crumb">' + parts.map(function (x, i) {
+      return i === parts.length - 1 ? x.label : '<a href="' + x.href + '">' + x.label + '</a>';
+    }).join(' / ') + '</div>';
+  }
+
+  function trustStrip() {
+    return '<div class="strip">' +
+      '<div>' + iconCash('#C9A24B') + 'Cash on delivery only</div>' +
+      '<div>' + iconShield('#C9A24B') + 'Authenticity guaranteed</div>' +
+      '<div>' + iconTruck('#C9A24B') + 'Delivery across Egypt</div></div>';
+  }
+
+  /* ========== pages ========== */
+
+  function pageHome() {
+    var best = ['cerave-0','lrp-0','vichy-0','eucerin-0','bioderma-0','avene-0','isdin-0','svr-0'].map(function (id) { return byId[id]; });
+    return '' +
+    '<section class="dark"><div class="wrap hero">' +
+      '<div class="hero-txt">' +
+        '<span class="eyebrow">Dermatological skincare &middot; Egypt</span>' +
+        '<h1>Clinic-grade skincare, without the clinic price.</h1>' +
+        '<p>Eleven dermatological houses, one storefront. Every product below its original retail price, delivered nationwide and paid for at your door.</p>' +
+        '<div class="cta-row"><a class="btn btn-gold" href="#/brands">Shop all brands</a>' +
+        '<a class="btn btn-ghost" href="#/collection/cerave">Find your routine</a></div>' +
+      '</div>' +
+      '<div class="hero-art">' + shot([46,96,18,26,4],110,'#5E564A') + shot([40,102,22,10,6],96,'#6E6555') + shot([62,54,66,12,4],88,'#5E564A') + '</div>' +
+    '</div></section>' +
+    trustStrip() +
+    '<section class="sand sec"><div class="wrap">' +
+      '<div class="sec-head"><h2>Shop by brand</h2><a href="#/brands">All collections &rarr;</a></div>' +
+      '<div class="g5">' + BRANDS.map(brandTile).join('') + '</div>' +
+    '</div></section>' +
+    '<section class="light sec"><div class="wrap">' +
+      '<div class="sec-head"><h2>Best sellers</h2><a href="#/collection/cerave">View all products &rarr;</a></div>' +
+      '<div class="g4">' + best.map(card).join('') + '</div>' +
+    '</div></section>' +
+    '<section class="dark"><div class="wrap band">' +
+      '<div><span class="eyebrow">Histomer &middot; Milano</span>' +
+      '<h2 style="margin-top:18px">The professional line, kept in house.</h2>' +
+      '<p>Italian cosmeceuticals formulated for clinic protocols — peels, boosters and repair creams you won\'t find on a pharmacy shelf in Egypt.</p>' +
+      '<a class="btn btn-gold-o" href="#/histomer">Explore Histomer</a></div>' +
+      '<div style="display:flex;gap:32px">' + shot([40,96,14,34,3],92,'#6E6555') + shot([58,58,62,12,4],92,'#5E564A') + '</div>' +
+    '</div></section>' +
+    '<section class="dark"><div class="wrap center-band">' +
+      '<h2>Order now, pay when it arrives.</h2>' +
+      '<p>No card, no bank transfer, no prepayment. Hand the courier cash when your order reaches your door.</p>' +
+      '<a class="btn btn-gold" href="#/brands" style="margin-top:8px">Start shopping</a>' +
+    '</div></section>';
+  }
+
+  function pageBrands() {
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{label:'Brands'}]) +
+      '<h1>All brands</h1>' +
+      '<p>Eleven dermatological houses. Every collection priced below original retail.</p>' +
+    '</div></section>' +
+    '<section class="sand sec"><div class="wrap">' +
+      '<a class="band" href="#/histomer" style="background:var(--ink);border:1px solid var(--line);padding:40px;margin-bottom:40px">' +
+        '<div><span class="eyebrow">The house brand</span>' +
+        '<h2 style="font-size:40px;margin:12px 0">Histomer</h2>' +
+        '<p style="margin:0">Italian professional cosmeceuticals &middot; 28 products</p></div>' +
+        '<span class="btn btn-gold-o">View collection</span>' +
+      '</a>' +
+      '<div class="g5">' + BRANDS.map(brandTile).join('') + '</div>' +
+    '</div></section>';
+  }
+
+  function pageCollection(slug) {
+    var b = brandBySlug[slug];
+    if (!b) return pageMissing();
+    var items = ofBrand(slug);
+    var filters = [
+      ['Concern', ['Acne & blemishes','Dryness & barrier','Pigmentation','Sun protection']],
+      ['Product type', ['Cleansers','Moisturisers','Serums','Sunscreen','Body & baby']],
+      ['Skin type', ['Normal','Oily','Dry','Sensitive']]
+    ];
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{href:'#/brands',label:'Brands'},{label:b.name}]) +
+      '<h1>' + b.name + '</h1><p>' + b.blurb + '</p>' +
+    '</div></section>' +
+    '<section class="sand"><div class="wrap coll">' +
+      '<aside class="side">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between">' +
+          '<h2 style="font-size:22px">Filters</h2><a href="#/collection/' + slug + '" style="font-size:12px">Clear all</a></div>' +
+        filters.map(function (f, fi) {
+          return '<div class="fgroup"><h3>' + f[0] + '</h3>' + f[1].map(function (o, i) {
+            return '<label class="frow"><input type="checkbox"> ' + o + '<span class="n">' + (3 + ((i * 5 + fi * 3) % 9)) + '</span></label>';
+          }).join('') + '</div>';
+        }).join('') +
+        '<div class="fgroup"><h3>Price (EGP)</h3><div style="display:flex;gap:10px">' +
+          '<label class="sr" for="pmin">Minimum price</label><input class="field" id="pmin" type="text" value="400">' +
+          '<label class="sr" for="pmax">Maximum price</label><input class="field" id="pmax" type="text" value="3,500"></div></div>' +
+      '</aside>' +
+      '<div class="col-main" style="flex:1">' +
+        '<div class="toolbar">' +
+          '<span style="font-size:14px;color:var(--muted)">' + items.length + ' products</span>' +
+          '<div class="mfilter"><button class="field" type="button" style="width:auto;padding:0 18px;cursor:pointer">Filter</button></div>' +
+          '<div style="display:flex;align-items:center;gap:10px">' +
+            '<label for="sort" style="font-size:13px;color:var(--muted)">Sort</label>' +
+            '<select class="field" id="sort" style="width:auto"><option>Best selling</option><option>Biggest saving</option><option>Price: low to high</option><option>Price: high to low</option><option>Newest</option></select>' +
+          '</div>' +
+        '</div>' +
+        '<div class="g3">' + items.map(card).join('') + '</div>' +
+        '<div class="pager"><span class="on">1</span><a href="#/collection/' + slug + '">2</a><a href="#/collection/' + slug + '">Next</a></div>' +
+      '</div>' +
+    '</div></section>';
+  }
+
+  function pageHistomer() {
+    var items = ofBrand('histomer');
+    return '' +
+    '<section class="dark"><div class="wrap band" style="padding:64px 0">' +
+      '<div style="flex:1">' +
+        crumb([{href:'#/',label:'Home'},{href:'#/brands',label:'Brands'},{label:'Histomer'}]) +
+        '<span class="eyebrow" style="display:block;margin-top:16px">Milano &middot; since 1968</span>' +
+        '<h2 style="font-size:58px;margin:16px 0">Histomer</h2>' +
+        '<p>' + HOUSE.blurb + '</p>' +
+        '<div style="display:flex;gap:40px">' +
+          '<span class="stat"><b>28</b><span>Products</span></span>' +
+          '<span class="stat"><b>6</b><span>Protocol lines</span></span>' +
+          '<span class="stat"><b>100%</b><span>Made in Italy</span></span>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:32px">' + shot([40,96,14,34,3],92,'#6E6555') + shot([58,58,62,12,4],92,'#5E564A') + '</div>' +
+    '</div></section>' +
+    '<section class="sand sec"><div class="wrap">' +
+      '<div class="sec-head"><h2>The full line</h2>' +
+        '<div style="display:flex;align-items:center;gap:10px">' +
+          '<label for="hsort" style="font-size:13px;color:var(--muted)">Sort</label>' +
+          '<select class="field" id="hsort" style="width:auto"><option>Protocol order</option><option>Price: low to high</option><option>Price: high to low</option></select></div>' +
+      '</div>' +
+      '<div class="g3">' + items.map(card).join('') + '</div>' +
+    '</div></section>';
+  }
+
+  function pageProduct(id) {
+    var p = byId[id];
+    if (!p) return pageMissing();
+    var related = PRODUCTS.filter(function (x) { return x.id !== p.id && x.house === p.house; }).slice(0, 4);
+    var shapes = [p.shape, [46,98,18,26,4], [40,88,20,12,5], [58,58,62,12,4]];
+    var tone = p.house ? '#B0A288' : '#B9AD95';
+
+    var priceArea = p.house
+      ? '<div class="pricebox"><span class="big-now">' + egp(p.now) + '</span><span style="font-size:13px;color:var(--muted)">Price includes VAT.</span></div>'
+      : '<div class="pricebox">' +
+          '<div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">' +
+            '<span class="big-now">' + egp(p.now) + '</span>' +
+            '<span class="big-was">' + egp(p.was) + '</span>' +
+            '<span class="chip">YOU SAVE ' + egp(p.was - p.now) + '</span>' +
+          '</div>' +
+          '<span style="font-size:13px;color:var(--muted)">Original retail price shown for comparison. Price includes VAT.</span>' +
+        '</div>';
+
+    return '' +
+    '<section class="sand" style="border-bottom:1px solid var(--lineL)"><div class="wrap" style="padding:18px 0">' +
+      crumb([{href:'#/',label:'Home'},{href:'#/brands',label:'Brands'},{href:'#/' + (p.house ? 'histomer' : 'collection/' + p.brandSlug), label:p.brand},{label:p.name}]) +
+    '</div></section>' +
+    '<section class="light"><div class="wrap pdp">' +
+      '<div class="gal">' +
+        '<div class="gmain' + (p.house ? ' hist' : '') + '">' +
+          (p.house ? '' : '<span class="save" style="top:18px;left:18px;font-size:11px;padding:7px 12px">&minus;' + p.save + '%</span>') +
+          shot(p.shape, 200, tone) +
+        '</div>' +
+        '<div class="thumbs">' + shapes.map(function (s, i) {
+          return '<span class="thumb' + (i === 0 ? ' on' : '') + '">' + shot(s, 34, '#C3B79F') + '</span>';
+        }).join('') + '</div>' +
+      '</div>' +
+      '<div class="pinfo">' +
+        '<span class="pbrand" style="font-size:11px">' + p.brand + (p.house ? ' &middot; ' + p.line : '') + '</span>' +
+        '<h1>' + p.name + '</h1>' +
+        '<span style="font-size:14px;color:var(--muted)">' + p.size + ' &middot; Fragrance-free &middot; Dermatologist tested</span>' +
+        '<div style="display:flex;align-items:center;gap:10px">' + stars() + '<span style="font-size:13px;color:var(--muted)">4.8 &middot; 214 reviews</span></div>' +
+        priceArea +
+        '<div class="stock">' + tick('#2A7A4B') + 'In stock &middot; ships within 24 hours</div>' +
+        '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">' +
+          '<div class="qty"><button type="button" aria-label="Decrease quantity" data-q="-1">&minus;</button><span id="qty">1</span><button type="button" aria-label="Increase quantity" data-q="1">+</button></div>' +
+          '<button class="btn btn-ink" style="flex:1;min-width:200px" type="button" id="addCart" data-id="' + p.id + '">Add to cart</button>' +
+        '</div>' +
+        '<a class="btn btn-ink-o btn-full" href="#/checkout">Buy now &middot; pay on delivery</a>' +
+        '<div class="trust">' +
+          '<div>' + iconCash('#8A6A1F') + 'Cash on delivery — pay the courier at your door</div>' +
+          '<div>' + iconTruck('#8A6A1F') + 'Cairo &amp; Giza 1–2 days &middot; other governorates 2–4 days</div>' +
+          '<div>' + iconShield('#8A6A1F') + 'Batch code and expiry checked before dispatch</div>' +
+        '</div>' +
+      '</div>' +
+    '</div></section>' +
+    '<section class="sand sec"><div class="wrap details">' +
+      '<div><h2>Description</h2>' +
+        '<p>A dermatologist-developed formula that restores the skin barrier and holds moisture where it is needed, without a heavy or occlusive finish.</p>' +
+        '<p>Fragrance-free, non-comedogenic and suitable for daily use on sensitive skin.</p></div>' +
+      '<div><h2>How to use</h2>' +
+        ['Cleanse with a gentle, non-foaming wash and pat the skin dry.',
+         'Apply while the skin is still slightly damp.',
+         'Use morning and night, or as the skin requires.',
+         'Follow with SPF 50+ during the day.'].map(function (t, i) {
+          return '<div class="step"><span class="num">' + (i + 1) + '</span><span style="font-size:15px;line-height:1.6;color:var(--body)">' + t + '</span></div>';
+        }).join('') + '</div>' +
+      '<div><h2>Key ingredients</h2>' +
+        [['Ceramides 1, 3 and 6-II','Rebuild the skin barrier and hold water in the outer layers.'],
+         ['Hyaluronic acid','Draws moisture into the skin and keeps it there.'],
+         ['Glycerin','Humectant that softens rough, flaking patches.'],
+         ['Niacinamide','Calms visible redness and supports barrier function.']].map(function (x) {
+          return '<div class="ing"><b>' + x[0] + '</b><span>' + x[1] + '</span></div>';
+        }).join('') + '</div>' +
+    '</div></section>' +
+    '<section class="light sec"><div class="wrap">' +
+      '<div class="sec-head"><h2>Pairs well with</h2><a href="#/' + (p.house ? 'histomer' : 'collection/' + p.brandSlug) + '">More from ' + p.brand + ' &rarr;</a></div>' +
+      '<div class="g4">' + related.map(card).join('') + '</div>' +
+    '</div></section>';
+  }
+
+  function pageCart() {
+    var t = cartTotals();
+    if (!t.lines.length) {
+      return '<section class="dark"><div class="wrap page-head"><h1>Your cart</h1></div></section>' +
+        '<section class="sand sec"><div class="wrap" style="text-align:center;padding:60px 0">' +
+        '<p style="font-size:16px;color:var(--muted)">Your cart is empty.</p>' +
+        '<a class="btn btn-ink" href="#/brands">Browse brands</a></div></section>';
+    }
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{label:'Cart'}]) + '<h1>Your cart</h1></div></section>' +
+    '<section class="sand"><div class="wrap two">' +
+      '<div class="col-main">' +
+        '<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--lineL);padding-bottom:14px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">' +
+          '<span>' + t.count + ' items</span><span>Line total</span></div>' +
+        t.lines.map(function (l) {
+          return '<div class="citem">' +
+            '<span class="cthumb">' + shot(l.p.shape, 44, '#B9AD95') + '</span>' +
+            '<div style="flex:1;min-width:0">' +
+              '<div class="pbrand">' + l.p.brand + '</div>' +
+              '<a href="#/product/' + l.p.id + '" style="font-size:17px;color:var(--text);display:block;margin:6px 0">' + l.p.name + '</a>' +
+              '<div class="psize">' + l.p.size + '</div>' +
+              '<div style="display:flex;align-items:center;gap:16px;margin-top:10px">' +
+                '<div class="qty" style="height:40px"><button type="button" aria-label="Decrease quantity" data-cart="-1" data-id="' + l.p.id + '" style="width:38px;height:38px;font-size:17px">&minus;</button>' +
+                '<span style="width:34px;font-size:15px">' + l.qty + '</span>' +
+                '<button type="button" aria-label="Increase quantity" data-cart="1" data-id="' + l.p.id + '" style="width:38px;height:38px;font-size:17px">+</button></div>' +
+                '<button type="button" data-remove="' + l.p.id + '" style="background:none;border:none;font-size:13px;color:var(--muted2);text-decoration:underline;cursor:pointer">Remove</button>' +
+              '</div>' +
+            '</div>' +
+            '<div style="text-align:right">' +
+              '<div class="now">' + egp(l.total) + '</div>' +
+              (l.wasTotal ? '<div class="was">' + egp(l.wasTotal) + '</div>' : '') +
+            '</div></div>';
+        }).join('') +
+        '<a href="#/brands" style="display:inline-block;margin-top:26px;font-size:14px">&larr; Continue shopping</a>' +
+      '</div>' +
+      '<div class="col-side">' +
+        '<div class="panel">' +
+          '<h2>Order summary</h2>' +
+          '<div class="line"><span>Subtotal</span><span>' + egp(t.sub) + '</span></div>' +
+          '<div class="line gold"><span>You save</span><span>&minus; ' + egp(t.saved) + '</span></div>' +
+          '<div class="line"><span>Delivery</span><span>' + (t.sub >= 1500 ? 'Free' : egp(60)) + '</span></div>' +
+          '<div class="line"><span>Cash on delivery fee</span><span>EGP 0</span></div>' +
+          '<div class="total"><span>Total to pay on delivery</span><b>' + egp(t.sub >= 1500 ? t.sub : t.sub + 60) + '</b></div>' +
+          '<a class="btn btn-ink btn-full" href="#/checkout">Checkout</a>' +
+          '<div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--muted)">' + iconCash('#8A6A1F', 15) + 'Cash on delivery only</div>' +
+        '</div>' +
+      '</div>' +
+    '</div></section>';
+  }
+
+  function pageCheckout() {
+    var t = cartTotals();
+    var grand = t.sub >= 1500 ? t.sub : t.sub + 60;
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      '<div class="steps-bar"><a href="#/cart" style="color:#8E867A">Cart</a><span style="color:#3A342A">&mdash;</span><span class="on">Details</span><span style="color:#3A342A">&mdash;</span><span>Confirmation</span></div>' +
+      '<h1>Checkout</h1></div></section>' +
+    '<section class="sand"><div class="wrap two">' +
+      '<div class="col-main" style="display:flex;flex-direction:column;gap:40px">' +
+        '<div style="display:flex;flex-direction:column;gap:20px"><h2 style="font-size:24px">1. Contact</h2>' +
+          '<div class="g-two" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">' +
+            '<div class="fld"><label for="fn">Full name</label><input id="fn" type="text" placeholder="Nour Abdelrahman"></div>' +
+            '<div class="fld"><label for="ph">Mobile number</label><input id="ph" type="tel" placeholder="010 0000 0000"></div>' +
+          '</div>' +
+          '<div class="fld"><label for="em">Email (for the order confirmation)</label><input id="em" type="email" placeholder="you@example.com"></div>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:20px"><h2 style="font-size:24px">2. Delivery address</h2>' +
+          '<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">' +
+            '<div class="fld"><label for="gov">Governorate</label><select id="gov"><option>Cairo</option><option>Giza</option><option>Alexandria</option><option>Qalyubia</option><option>Dakahlia</option><option>Sharqia</option><option>Other governorate</option></select></div>' +
+            '<div class="fld"><label for="ar">Area / district</label><input id="ar" type="text" placeholder="Maadi"></div>' +
+          '</div>' +
+          '<div class="fld"><label for="st">Street address</label><input id="st" type="text" placeholder="Building, street, floor, apartment"></div>' +
+          '<div class="fld"><label for="nt">Delivery notes (optional)</label><input id="nt" type="text" placeholder="Landmark, best time to call"></div>' +
+        '</div>' +
+        '<div style="display:flex;flex-direction:column;gap:20px"><h2 style="font-size:24px">3. Payment</h2>' +
+          '<div class="pay"><input id="cod" type="radio" name="pay" checked>' +
+            '<div><label for="cod" style="font-size:17px;color:var(--text)">Cash on delivery</label>' +
+            '<div style="font-size:14px;color:var(--muted);line-height:1.65;margin-top:7px">Pay the courier in cash when your order reaches your door. Please have the exact amount ready where possible — couriers may not carry change.</div></div>' +
+            '<span style="margin-left:auto">' + iconCash('#8A6A1F', 26) + '</span></div>' +
+          '<span style="font-size:13px;color:var(--muted2)">Cash on delivery is currently the only payment method at QEUNOVA.</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="col-side"><div class="panel">' +
+        '<h2>Your order</h2>' +
+        t.lines.map(function (l) {
+          return '<div style="display:flex;align-items:center;gap:14px">' +
+            '<span style="width:56px;height:56px;flex:0 0 auto;background:var(--cream);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted2)">' + l.qty + '&times;</span>' +
+            '<div style="flex:1;min-width:0"><div style="font-size:14px">' + l.p.name + '</div>' +
+            '<div style="font-size:12px;color:var(--muted2)">' + l.p.brand + ' &middot; ' + l.p.size + '</div></div>' +
+            '<span style="font-size:15px">' + egp(l.total) + '</span></div>';
+        }).join('') +
+        '<div style="border-top:1px solid var(--lineL);padding-top:16px;display:flex;flex-direction:column;gap:12px">' +
+          '<div class="line"><span>Subtotal</span><span>' + egp(t.sub) + '</span></div>' +
+          '<div class="line gold"><span>You save</span><span>&minus; ' + egp(t.saved) + '</span></div>' +
+          '<div class="line"><span>Delivery</span><span>' + (t.sub >= 1500 ? 'Free' : egp(60)) + '</span></div>' +
+        '</div>' +
+        '<div class="total"><span>Pay on delivery</span><b>' + egp(grand) + '</b></div>' +
+        '<a class="btn btn-ink btn-full" href="#/confirmed">Place order</a>' +
+        '<span style="font-size:12px;color:var(--muted2);text-align:center;line-height:1.6">By placing this order you agree to our delivery and returns policy.</span>' +
+      '</div></div>' +
+    '</div></section>';
+  }
+
+  function pageConfirmed() {
+    var t = cartTotals();
+    var grand = t.sub >= 1500 ? t.sub : t.sub + 60;
+    return '<section class="sand" style="padding:56px 0"><div class="wrap"><div class="confirm">' +
+      '<div style="text-align:center"><span class="ring">' + tick('#8A6A1F', 30) + '</span>' +
+      '<h1 style="font-size:40px;margin:18px 0 12px">Order confirmed</h1>' +
+      '<p style="font-size:16px;color:var(--body);line-height:1.7;margin:0 auto;max-width:520px">Thank you, Nour. We\'ve sent the details to your email and our team will call you shortly to confirm the delivery window.</p></div>' +
+      '<div class="meta3">' +
+        '<div><span>Order number</span><b>QN-2026-04871</b></div>' +
+        '<div><span>Estimated delivery</span><b>22–23 September</b></div>' +
+        '<div><span>Pay on delivery</span><b>' + egp(grand) + '</b></div>' +
+      '</div>' +
+      '<div><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:16px">What happens next</span>' +
+        ['Our team calls you within a few hours to confirm the address and delivery window.',
+         'We check batch codes and expiry dates, then pack and dispatch your order.',
+         'The courier arrives, you inspect the parcel, and you pay in cash.'].map(function (s, i) {
+          return '<div class="step"><span class="num">' + (i + 1) + '</span><span style="font-size:15px;line-height:1.65;color:var(--body)">' + s + '</span></div>';
+        }).join('') + '</div>' +
+      '<div class="note">' + iconCash('#8A6A1F', 18) + 'Please have ' + egp(grand) + ' in cash ready for the courier. Exact change is appreciated.</div>' +
+      '<div style="display:flex;gap:16px;flex-wrap:wrap">' +
+        '<a class="btn btn-ink" style="flex:1;min-width:200px" href="#/track">Track my order</a>' +
+        '<a class="btn btn-ink-o" style="flex:1;min-width:200px" href="#/brands">Continue shopping</a></div>' +
+    '</div></div></section>';
+  }
+
+  function pageTrack() {
+    var stages = [
+      ['Order confirmed','Sunday 20 September, 14:02 — confirmed by phone.', true],
+      ['Packed and checked','Sunday 20 September, 18:40 — batch codes and expiry verified.', true],
+      ['Out for delivery','Monday 21 September, 09:15 — with the courier in Maadi.', true],
+      ['Delivered and paid','Expected Monday 21 September, before 20:00.', false]
+    ];
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{label:'Track my order'}]) + '<h1>Track my order</h1></div></section>' +
+    '<section class="sand"><div class="wrap two">' +
+      '<div class="col-side"><div class="panel">' +
+        '<h2>Find your order</h2>' +
+        '<div class="fld"><label for="ono">Order number</label><input id="ono" type="text" placeholder="QN-2026-00000"></div>' +
+        '<div class="fld"><label for="oph">Mobile number used on the order</label><input id="oph" type="tel" placeholder="010 0000 0000"></div>' +
+        '<button class="btn btn-ink btn-full" type="button">Track order</button>' +
+        '<span style="font-size:13px;color:var(--muted);line-height:1.65">Can\'t find your order number? <a href="#/help">Message us on WhatsApp</a> and we\'ll look it up.</span>' +
+      '</div></div>' +
+      '<div class="col-main"><div class="panel">' +
+        '<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--lineL);padding-bottom:22px;flex-wrap:wrap;gap:16px">' +
+          '<div><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Order QN-2026-04871</span>' +
+          '<h2 style="font-size:26px;margin:6px 0">Out for delivery</h2>' +
+          '<span style="font-size:14px;color:var(--muted)">3 items &middot; Maadi, Cairo</span></div>' +
+          '<div style="text-align:right"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Pay on delivery</span>' +
+          '<div style="font-family:var(--serif);font-size:26px;margin-top:6px">' + egp(6170) + '</div></div>' +
+        '</div>' +
+        '<div style="padding-top:8px">' + stages.map(function (s) {
+          return '<div class="timeline"><span class="dot ' + (s[2] ? 'done' : 'todo') + '">' + tick(s[2] ? '#C9A24B' : '#DDD4C4') + '</span>' +
+            '<div><div style="font-size:17px;color:' + (s[2] ? 'var(--text)' : 'var(--muted2)') + '">' + s[0] + '</div>' +
+            '<div style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:5px">' + s[1] + '</div></div></div>';
+        }).join('') + '</div>' +
+        '<div class="note">' + iconCash('#8A6A1F') + 'Your courier will call before arriving. Please have ' + egp(6170) + ' in cash ready.</div>' +
+      '</div></div>' +
+    '</div></section>';
+  }
+
+  function pageAbout() {
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{label:'About'}]) +
+      '<h1 style="max-width:900px">Dermatological skincare shouldn\'t be a luxury import.</h1>' +
+      '<p>QEUNOVA exists because the same tube of ceramide cream costs three different prices in three Cairo pharmacies, and half of them aren\'t real.</p>' +
+    '</div></section>' +
+    '<section class="sand sec"><div class="wrap" style="display:flex;gap:72px;flex-wrap:wrap">' +
+      '<h2 style="flex:0 0 340px;font-size:34px">Why we started</h2>' +
+      '<div style="flex:1 1 420px;min-width:0">' +
+        '<p style="font-size:16px;line-height:1.85;color:var(--body);margin:0 0 20px">Dermatologists in Egypt prescribe the same handful of brands, and patients then spend a week hunting for them. Stock runs out. Prices drift upward. Counterfeits circulate freely on social media, sold in the same packaging at half the price.</p>' +
+        '<p style="font-size:16px;line-height:1.85;color:var(--body);margin:0 0 20px">We buy through official distribution channels, check every batch code and expiry date before a parcel leaves us, and list each product below its original retail price. Nothing is marked up to be discounted later.</p>' +
+        '<p style="font-size:16px;line-height:1.85;color:var(--body);margin:0">Alongside the pharmacy brands we import Histomer from Milan — the professional line used in clinic protocols, which has never had a proper route to Egyptian customers until now.</p>' +
+      '</div>' +
+    '</div></section>' +
+    '<section class="light sec"><div class="wrap g3">' +
+      [['Authentic or nothing','Official distribution channels only. Every parcel is checked for batch code and expiry date before it is sealed.'],
+       ['Below retail, always','Each product carries its original retail price beside ours, so the saving is visible rather than claimed.'],
+       ['Pay at your door','Cash on delivery across every governorate. Inspect the parcel first, then hand over the money.']].map(function (x) {
+        return '<div><span style="width:48px;height:48px;border:1px solid var(--goldL);display:flex;align-items:center;justify-content:center;margin-bottom:14px">' + iconShield('#8A6A1F', 22) + '</span>' +
+          '<h3 style="font-size:22px;margin-bottom:12px">' + x[0] + '</h3>' +
+          '<p style="margin:0;font-size:15px;line-height:1.75;color:var(--body)">' + x[1] + '</p></div>';
+      }).join('') +
+    '</div></section>' +
+    '<section class="dark"><div class="wrap band">' +
+      '<div><span class="eyebrow">Eleven collections</span><h2 style="font-size:34px;margin-top:12px">See what we carry</h2></div>' +
+      '<a class="btn btn-gold" href="#/brands">Browse brands</a>' +
+    '</div></section>';
+  }
+
+  function pageHelp() {
+    return '' +
+    '<section class="dark"><div class="wrap page-head">' +
+      crumb([{href:'#/',label:'Home'},{label:'Help'}]) + '<h1>Help &amp; information</h1></div></section>' +
+    '<section class="sand sec"><div class="wrap" style="display:flex;gap:64px;flex-wrap:wrap;align-items:flex-start">' +
+      '<nav class="helpnav"><a href="#/help">Delivery</a><a href="#/help">Payment</a><a href="#/help">Returns</a><a href="#/help">Authenticity</a><a href="#/help">Contact us</a></nav>' +
+      '<div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:44px">' +
+        '<div><h2 style="font-size:30px;margin-bottom:18px">Delivery</h2>' +
+          '<div class="g3" style="margin-bottom:18px">' +
+            [['Cairo &amp; Giza','1–2 days','EGP 60, free over EGP 1,500'],
+             ['Delta &amp; Alexandria','2–3 days','EGP 75, free over EGP 1,500'],
+             ['Upper Egypt &amp; Sinai','3–4 days','EGP 95, free over EGP 1,500']].map(function (x) {
+              return '<div class="hcard"><span style="font-size:15px">' + x[0] + '</span><b>' + x[1] + '</b><span style="font-size:13px;color:var(--muted)">' + x[2] + '</span></div>';
+            }).join('') + '</div>' +
+          '<p style="font-size:15px;line-height:1.8;color:var(--body);margin:0">Orders placed before 4pm are dispatched the same working day. We call before the courier sets out to confirm someone will be there to receive the parcel.</p></div>' +
+        '<div><h2 style="font-size:30px;margin-bottom:18px">Payment</h2>' +
+          '<div class="panel" style="flex-direction:row;align-items:center;gap:16px">' + iconCash('#8A6A1F', 26) +
+          '<span style="font-size:15px;line-height:1.7;color:var(--body)">Cash on delivery is our only payment method. There is no cash-on-delivery fee, and no prepayment is ever requested — if anyone asks you to transfer money before your parcel arrives, it is not us.</span></div></div>' +
+        '<div><h2 style="font-size:30px;margin-bottom:18px">Returns</h2>' +
+          '<p style="font-size:15px;line-height:1.8;color:var(--body);margin:0 0 16px">You may inspect the parcel in front of the courier before paying. If something is wrong — wrong item, damaged seal, short expiry — refuse the delivery and you pay nothing.</p>' +
+          '<p style="font-size:15px;line-height:1.8;color:var(--body);margin:0">After delivery, unopened products with intact seals can be returned within 14 days. For hygiene reasons we cannot accept opened skincare unless the product is faulty.</p></div>' +
+        '<div><h2 style="font-size:30px;margin-bottom:18px">Authenticity</h2>' +
+          ['We source through official distributors and authorised wholesalers only.',
+           'Batch codes and expiry dates are recorded and checked before every dispatch.',
+           'Nothing within six months of expiry is ever sold or shipped.',
+           'If you ever doubt a product you received from us, send us the batch code and we will trace it for you.'].map(function (t) {
+            return '<div style="display:flex;gap:14px;margin-bottom:14px">' + tick('#8A6A1F', 18) + '<span style="font-size:15px;line-height:1.7;color:var(--body)">' + t + '</span></div>';
+          }).join('') + '</div>' +
+        '<div><h2 style="font-size:30px;margin-bottom:18px">Contact us</h2>' +
+          '<div style="display:flex;gap:20px;flex-wrap:wrap">' +
+            '<div class="panel" style="flex:1 1 320px">' +
+              '<div style="display:flex;gap:16px;flex-wrap:wrap">' +
+                '<div class="fld" style="flex:1 1 140px"><label for="cn">Your name</label><input id="cn" type="text"></div>' +
+                '<div class="fld" style="flex:1 1 140px"><label for="cp">Mobile number</label><input id="cp" type="tel"></div></div>' +
+              '<div class="fld"><label for="cm">How can we help?</label><textarea id="cm" rows="3"></textarea></div>' +
+              '<button class="btn btn-ink btn-full" type="button">Send message</button></div>' +
+            '<div style="flex:0 1 300px;display:flex;flex-direction:column;gap:14px">' +
+              '<span class="panel" style="background:var(--ink);border-color:var(--ink);padding:20px 22px;flex-direction:row;align-items:center;gap:13px;color:#E7E0D4;font-size:15px">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.4"><path d="M3 21l1.7-5A8.2 8.2 0 1 1 8 19.3L3 21z"/></svg>WhatsApp us</span>' +
+              '<div class="hcard"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Opening hours</span><span style="font-size:15px;line-height:1.7">Saturday to Thursday<br>10:00 &ndash; 20:00</span></div>' +
+              '<div class="hcard"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Email</span><span style="font-size:15px">hello@qeunova.com</span></div>' +
+            '</div></div></div>' +
+      '</div>' +
+    '</div></section>';
+  }
+
+  function pageMissing() {
+    return '<section class="dark"><div class="wrap page-head"><h1>Page not found</h1>' +
+      '<p>That link doesn\'t point anywhere yet.</p></div></section>' +
+      '<section class="sand sec"><div class="wrap"><a class="btn btn-ink" href="#/">Back to home</a></div></section>';
+  }
+
+  /* ========== mobile sticky bar ========== */
+
+  function setBar(html) {
+    var bar = document.getElementById('mbar');
+    if (!html) { bar.className = 'mbar'; bar.innerHTML = ''; document.body.classList.remove('has-bar'); return; }
+    bar.innerHTML = html; bar.className = 'mbar show'; document.body.classList.add('has-bar');
+  }
+
+  function barForProduct(p) {
+    return '<div class="p">' + (p.house ? '' : '<small>' + egp(p.was) + '</small>') + '<b>' + egp(p.now) + '</b></div>' +
+      '<button class="btn btn-ink" type="button" id="addCartBar" data-id="' + p.id + '">Add to cart</button>';
+  }
+
+  /* ========== router ========== */
+
+  function render() {
+    var hash = location.hash.replace(/^#\/?/, '');
+    var parts = hash.split('/').filter(Boolean);
+    var html, bar = '';
+
+    switch (parts[0]) {
+      case undefined: case '':    html = pageHome(); break;
+      case 'brands':              html = pageBrands(); break;
+      case 'collection':          html = pageCollection(parts[1]); break;
+      case 'histomer':            html = pageHistomer(); break;
+      case 'product':
+        html = pageProduct(parts[1]);
+        if (byId[parts[1]]) bar = barForProduct(byId[parts[1]]);
+        break;
+      case 'cart':
+        html = pageCart();
+        var tc = cartTotals();
+        if (tc.lines.length) bar = '<div class="p"><small style="text-decoration:none">Total</small><b>' + egp(tc.sub >= 1500 ? tc.sub : tc.sub + 60) + '</b></div><a class="btn btn-ink" href="#/checkout">Checkout</a>';
+        break;
+      case 'checkout':
+        html = pageCheckout();
+        var tk = cartTotals();
+        bar = '<div class="p"><small style="text-decoration:none">Pay on delivery</small><b>' + egp(tk.sub >= 1500 ? tk.sub : tk.sub + 60) + '</b></div><a class="btn btn-ink" href="#/confirmed">Place order</a>';
+        break;
+      case 'confirmed':           html = pageConfirmed(); break;
+      case 'track':               html = pageTrack(); break;
+      case 'about':               html = pageAbout(); break;
+      case 'help':                html = pageHelp(); break;
+      default:                    html = pageMissing();
+    }
+
+    document.getElementById('app').innerHTML = html;
+    setBar(bar);
+    refreshBadge();
+    closeDrawer();
+    window.scrollTo(0, 0);
+
+    var navLinks = document.querySelectorAll('#nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].classList.toggle('on', navLinks[i].getAttribute('href') === '#/' + parts.join('/'));
+    }
+  }
+
+  /* ========== interactions ========== */
+
+  function openDrawer() { document.getElementById('drawer').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.body.style.overflow = ''; }
+
+  document.getElementById('burger').addEventListener('click', openDrawer);
+  document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+  document.getElementById('drawer').addEventListener('click', function (e) {
+    if (e.target.closest('a')) closeDrawer();
+  });
+
+  document.getElementById('drawerBrands').innerHTML =
+    [HOUSE].concat(BRANDS).map(function (b) {
+      return '<a href="#/collection/' + (b.slug === 'histomer' ? '' : b.slug) + '"' +
+        (b.slug === 'histomer' ? ' href="#/histomer"' : '') + '>' + b.name + '<span>' + b.count + '</span></a>';
+    }).join('').replace('href="#/collection/"', 'href="#/histomer"');
+
+  document.addEventListener('click', function (e) {
+    var q = e.target.closest('[data-q]');
+    if (q) {
+      var el = document.getElementById('qty');
+      var v = Math.max(1, parseInt(el.textContent, 10) + parseInt(q.getAttribute('data-q'), 10));
+      el.textContent = v;
+      return;
+    }
+    var add = e.target.closest('#addCart, #addCartBar');
+    if (add) {
+      var id = add.getAttribute('data-id');
+      var n = 1;
+      var qe = document.getElementById('qty');
+      if (qe) n = parseInt(qe.textContent, 10) || 1;
+      var found = CART.filter(function (c) { return c.id === id; })[0];
+      if (found) found.qty += n; else CART.push({ id: id, qty: n });
+      refreshBadge();
+      add.textContent = 'Added to cart';
+      setTimeout(function () { add.textContent = 'Add to cart'; }, 1400);
+      return;
+    }
+    var cq = e.target.closest('[data-cart]');
+    if (cq) {
+      var cid = cq.getAttribute('data-id');
+      var line = CART.filter(function (c) { return c.id === cid; })[0];
+      if (line) {
+        line.qty += parseInt(cq.getAttribute('data-cart'), 10);
+        if (line.qty < 1) CART = CART.filter(function (c) { return c.id !== cid; });
+      }
+      render();
+      return;
+    }
+    var rm = e.target.closest('[data-remove]');
+    if (rm) {
+      var rid = rm.getAttribute('data-remove');
+      CART = CART.filter(function (c) { return c.id !== rid; });
+      render();
+    }
+  });
+
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
+</body>
+</html>
