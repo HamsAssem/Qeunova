@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>QEUNOVA — Dermatological skincare, Egypt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -245,12 +245,89 @@ input,select,textarea{font-family:var(--sans);font-size:15px;color:#2A2724}
 .mbar .p b{font-family:var(--serif);font-size:20px;font-weight:400}
 .mbar a.btn{flex:1;height:52px;padding:0 16px}
 
-/* ---------- fixed desktop layout on every device ---------- */
-/* The viewport is pinned to 1440px, so phones scale this layout down instead
-   of reflowing it. Responsive breakpoints were removed on purpose: a narrow
-   desktop window now scrolls sideways rather than switching to a mobile layout,
-   so the site looks identical everywhere. */
-body{min-width:1440px}
+/* ---------- breakpoints ---------- */
+@media (max-width:1100px){
+  :root{--pad:40px}
+  .g5{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero{gap:40px}
+  .hero h1{font-size:50px}
+  .hero-art{flex-basis:400px;height:380px}
+  .details{gap:32px}
+  .two,.coll{gap:32px}
+}
+@media (max-width:900px){
+  .nav{display:none}
+  .burger{display:flex}
+  .hdr-in{height:64px}
+  .word{font-size:17px;letter-spacing:.28em}
+  .mono{width:38px;height:38px;font-size:19px}
+  .hero{flex-direction:column;align-items:stretch;padding:40px 0;gap:28px}
+  .hero-art{flex-basis:auto;height:280px;order:-1}
+  .hero h1{font-size:40px}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .strip{grid-template-columns:1fr}
+  .strip div{padding:20px 16px}
+  .strip div+div{border-left:none;border-top:1px solid #241F18}
+  .pdp{flex-direction:column;padding:32px 0}
+  .details{grid-template-columns:1fr;gap:40px}
+  .two{flex-direction:column}
+  .col-side{flex:1 1 auto;width:100%}
+  .coll{flex-direction:column}
+  .side{display:none}
+  .mfilter{display:flex}
+  .band{flex-direction:column;align-items:flex-start;gap:32px;padding:56px 0}
+  .band h2{font-size:34px}
+  .page-head{padding:44px 0 40px}
+  .page-head h1{font-size:38px}
+  .ftr-in{gap:40px}
+  .ftr-brand{flex:1 1 100%}
+  .confirm{padding:32px 24px}
+  .meta3{grid-template-columns:1fr;gap:18px}
+  .citem{gap:14px}
+  .cthumb{width:80px;height:80px}
+
+  /* sections need to read as separate blocks on a small screen */
+  .sec{padding:56px 0}
+  .sec-head{margin-bottom:24px}
+  .sec-head h2{font-size:30px}
+  .light,.sand{border-top:1px solid var(--lineL)}
+  .dark+.sand,.dark+.light{border-top:none}
+}
+@media (max-width:640px){
+  :root{--pad:20px}
+  .g5{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .g4,.g3{gap:12px}
+  .hero{padding:32px 0}
+  .hero h1{font-size:34px}
+  .hero-art{height:240px}
+  .hero-art svg{transform:scale(.8)}
+  .pinfo h1{font-size:28px}
+  .big-now{font-size:30px}
+  .price{flex-direction:column;align-items:flex-start;gap:2px}
+  .pbody{padding:12px}
+  .pname{font-size:13px}
+  .now{font-size:17px}
+  .was{font-size:11px}
+  .brand-tile{min-height:116px;padding:16px 10px;gap:6px}
+  .brand-tile .bn{font-size:16px}
+  .cta-row{gap:12px}
+  .cta-row .btn{width:100%}
+  .thumbs .thumb{width:64px;height:64px}
+  .gmain{aspect-ratio:1/1}
+  .panel{padding:22px}
+  .sec{padding:44px 0}
+  .sec-head h2{font-size:26px}
+  .band h2{font-size:28px}
+  .center-band{padding:56px 20px}
+  .center-band h2{font-size:26px}
+  .page-head h1{font-size:32px}
+  .details h2{font-size:22px}
+  .helpnav{flex:1 1 100%}
+  body.has-bar{padding-bottom:88px}
+  .mbar.show{display:flex}
+  .ftr-bot{flex-direction:column;align-items:flex-start;gap:8px}
+}
 </style>
 </head>
 <body>
