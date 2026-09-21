@@ -87,7 +87,8 @@ body.home{padding-top:0}
 .page-head p{color:var(--dim);font-size:16px;line-height:1.7;margin:14px 0 0;max-width:660px}
 
 /* ---------- split hero ---------- */
-.split{display:grid;grid-template-columns:1fr 1fr;height:100vh;min-height:580px;max-height:940px;background:var(--ink)}
+/* two columns at every width — the panels never stack */
+.split{display:grid;grid-template-columns:1fr 1fr;height:100vh;height:100svh;min-height:580px;max-height:940px;background:var(--ink)}
 .half{position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#F4EFE6;-webkit-tap-highlight-color:transparent}
 .half+.half{border-left:1px solid rgba(9,8,7,.25)}
 .half:hover{color:#F4EFE6}
@@ -95,17 +96,20 @@ body.home{padding-top:0}
 /* gated so a tap on a phone doesn't leave the panel stuck zoomed */
 @media (hover:hover){.half:hover img{transform:scale(1.04)}}
 .half:active .btn{opacity:.85}
-/* scrim: dark under the bar, clear across the product, dark again under the copy */
+/* scrim: dark under the bar, clear across the product, near-solid under the copy
+   so the eyebrow and headline stay legible over bright marble */
 .half::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(9,8,7,.34) 0%,rgba(9,8,7,0) 30%,rgba(9,8,7,.05) 46%,rgba(9,8,7,.62) 80%,rgba(9,8,7,.86) 100%)}
+  background:linear-gradient(180deg,rgba(9,8,7,.30) 0%,rgba(9,8,7,0) 24%,rgba(9,8,7,.12) 40%,rgba(9,8,7,.80) 70%,rgba(9,8,7,.96) 100%)}
 .half-in{position:relative;z-index:2;width:100%;padding:0 var(--pad) clamp(34px,4vw,56px);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-.half h2{font-size:clamp(28px,2.9vw,44px);color:#F4EFE6;max-width:16ch}
+/* the pale gold reads on the scrim where the mid gold does not */
+.half .eyebrow{color:var(--goldL)}
+.half h2{font-size:clamp(17px,2.9vw,44px);color:#F4EFE6;max-width:16ch}
 .half p{margin:0;font-size:15px;line-height:1.65;color:#CFC7BA;max-width:46ch}
 .half .btn{margin-top:10px}
 .half .btn-ghost{border-color:rgba(244,239,230,.55);color:#F4EFE6}
 .half .btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(9,8,7,.4)}
 /* the sale half shouts — its headline runs larger and the figure is picked out in gold */
-.half.sale h2{font-size:clamp(34px,4.1vw,60px);max-width:16ch}
+.half.sale h2{font-size:clamp(20px,4.1vw,60px);max-width:16ch}
 .half.sale h2 em{font-style:normal;color:var(--gold)}
 .cta-row{display:flex;flex-wrap:wrap;gap:16px;padding-top:6px}
 
@@ -301,12 +305,9 @@ body.home{padding-top:0}
   .word{font-size:17px;letter-spacing:.28em}
   .mono{width:38px;height:38px;font-size:19px}
   .ico.cart{width:44px;padding:0}
-  .split{grid-template-columns:1fr;height:auto;min-height:0;max-height:none}
-  /* svh keeps the panel steady while the mobile URL bar collapses */
-  .half{min-height:62vh;min-height:62svh}
-  /* the first panel runs under the fixed bar, so it earns that height back */
-  .half:first-child{min-height:calc(62svh + var(--top-h,110px))}
-  .half+.half{border-left:none;border-top:1px solid rgba(9,8,7,.25)}
+  /* the columns are too narrow for a paragraph, and dropping it keeps the
+     copy clear of the bar on a landscape phone */
+  .half p{display:none}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .strip{grid-template-columns:1fr}
@@ -349,15 +350,14 @@ body.home{padding-top:0}
   .logo{gap:10px}
   .mono{width:34px;height:34px;font-size:17px}
   .ico.track{display:none}
-  .half{min-height:54vh;min-height:54svh}
-  .half:first-child{min-height:calc(54svh + var(--top-h,110px))}
-  .half h2{font-size:28px}
-  .half.sale h2{font-size:32px}
-  /* the supporting line goes; the headline and CTA carry the panel
-     and the photograph gets the room back */
-  .half p{display:none}
-  .half-in{gap:12px;padding-bottom:28px}
-  .half .btn{width:100%}
+  /* a little under the full screen: eases the crop on a narrow column and
+     lets the strip below peek, so the page reads as scrollable */
+  .split{height:82svh;min-height:440px;max-height:none}
+  /* each column is only ~half the viewport, so the copy scales to fit it
+     rather than the page gutter */
+  .half-in{gap:9px;padding:0 14px 22px}
+  .half .eyebrow{font-size:9px;letter-spacing:.14em}
+  .half .btn{height:42px;padding:0 12px;font-size:10px;letter-spacing:.1em;margin-top:5px}
   .pinfo h1{font-size:28px}
   .big-now{font-size:30px}
   .price{flex-direction:column;align-items:flex-start;gap:2px}
@@ -700,8 +700,7 @@ body.home{padding-top:0}
     return '' +
     '<section class="split">' +
       '<a class="half" href="#/histomer">' +
-        '<picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" ' +
-          'srcset="images/hero-histomer-640.webp 640w, images/hero-histomer-1024.webp 1024w">' +
+        '<picture><source type="image/webp" srcset="images/hero-histomer-1024.webp">' +
           '<img src="images/hero-histomer.jpg" alt="Histomer HydraX4 cleansing balm, serum, cream and masks arranged on marble" width="1024" height="1024" fetchpriority="high"></picture>' +
         '<div class="half-in">' +
           '<span class="eyebrow">Histomer &middot; Milano</span>' +
@@ -711,8 +710,7 @@ body.home{padding-top:0}
         '</div>' +
       '</a>' +
       '<a class="half sale" href="#/brands">' +
-        '<picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" ' +
-          'srcset="images/hero-brands-640.webp 640w, images/hero-brands-1024.webp 1024w">' +
+        '<picture><source type="image/webp" srcset="images/hero-brands-1024.webp">' +
           '<img src="images/hero-brands.jpg" alt="La Roche-Posay, Vichy, CeraVe, Bioderma and Eucerin products on a marble counter" width="1024" height="1024" fetchpriority="high"></picture>' +
         '<div class="half-in">' +
           '<span class="eyebrow">Ten pharmacy houses</span>' +
@@ -1172,21 +1170,21 @@ body.home{padding-top:0}
   /* ========== fixed top bar ========== */
 
   var topbar = document.getElementById('topbar');
-  var overLimit = 0;   // measured once per layout, never during a scroll
+  var hasHero = false;
   var queued = false;
 
   // pages below the bar are offset by its real height; the home hero runs under it
   function syncTop() {
-    var h = topbar.offsetHeight;
-    document.documentElement.style.setProperty('--top-h', h + 'px');
-    var hero = document.querySelector('.split');
-    overLimit = hero ? hero.offsetHeight - h - 8 : 0;
+    document.documentElement.style.setProperty('--top-h', topbar.offsetHeight + 'px');
+    hasHero = !!document.querySelector('.split');
     syncOver();
   }
 
-  // the bar keeps its ink fill except while it is sitting over the hero imagery
+  // Transparent only while the hero is untouched. Holding it clear for the whole
+  // hero let the panel copy scroll visibly through the bar, so it takes its ink
+  // back as soon as the page moves.
   function syncOver() {
-    topbar.classList.toggle('over', overLimit > 0 && window.pageYOffset < overLimit);
+    topbar.classList.toggle('over', hasHero && window.pageYOffset < 24);
   }
 
   // scrolling only reads pageYOffset, and only once a frame — no reflow on touch
