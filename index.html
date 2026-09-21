@@ -88,11 +88,13 @@ body.home{padding-top:0}
 
 /* ---------- split hero ---------- */
 .split{display:grid;grid-template-columns:1fr 1fr;height:100vh;min-height:580px;max-height:940px;background:var(--ink)}
-.half{position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#F4EFE6}
+.half{position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#F4EFE6;-webkit-tap-highlight-color:transparent}
 .half+.half{border-left:1px solid rgba(9,8,7,.25)}
 .half:hover{color:#F4EFE6}
 .half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.6,.2,1)}
-.half:hover img{transform:scale(1.04)}
+/* gated so a tap on a phone doesn't leave the panel stuck zoomed */
+@media (hover:hover){.half:hover img{transform:scale(1.04)}}
+.half:active .btn{opacity:.85}
 /* scrim: dark under the bar, clear across the product, dark again under the copy */
 .half::after{content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(9,8,7,.34) 0%,rgba(9,8,7,0) 30%,rgba(9,8,7,.05) 46%,rgba(9,8,7,.62) 80%,rgba(9,8,7,.86) 100%)}
@@ -295,12 +297,15 @@ body.home{padding-top:0}
 @media (max-width:900px){
   .nav{display:none}
   .burger{display:flex}
-  .hdr-in{height:64px}
+  .hdr-in{height:64px;gap:0}
   .word{font-size:17px;letter-spacing:.28em}
   .mono{width:38px;height:38px;font-size:19px}
-  .hdr-in{gap:0}
+  .ico.cart{width:44px;padding:0}
   .split{grid-template-columns:1fr;height:auto;min-height:0;max-height:none}
-  .half{min-height:62vh}
+  /* svh keeps the panel steady while the mobile URL bar collapses */
+  .half{min-height:62vh;min-height:62svh}
+  /* the first panel runs under the fixed bar, so it earns that height back */
+  .half:first-child{min-height:calc(62svh + var(--top-h,110px))}
   .half+.half{border-left:none;border-top:1px solid rgba(9,8,7,.25)}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -337,10 +342,21 @@ body.home{padding-top:0}
   :root{--pad:20px}
   .g5{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .g4,.g3{gap:12px}
-  .half{min-height:74vh}
-  .half h2{font-size:30px}
-  .half.sale h2{font-size:34px}
-  .half-in{gap:12px}
+  /* header has to clear 360px-wide phones, so the wordmark tightens
+     and Track drops out — it already sits in the drawer */
+  .announce{padding:9px 16px;letter-spacing:.1em}
+  .word{font-size:15px;letter-spacing:.2em}
+  .logo{gap:10px}
+  .mono{width:34px;height:34px;font-size:17px}
+  .ico.track{display:none}
+  .half{min-height:54vh;min-height:54svh}
+  .half:first-child{min-height:calc(54svh + var(--top-h,110px))}
+  .half h2{font-size:28px}
+  .half.sale h2{font-size:32px}
+  /* the supporting line goes; the headline and CTA carry the panel
+     and the photograph gets the room back */
+  .half p{display:none}
+  .half-in{gap:12px;padding-bottom:28px}
   .half .btn{width:100%}
   .pinfo h1{font-size:28px}
   .big-now{font-size:30px}
@@ -408,7 +424,7 @@ body.home{padding-top:0}
       <button class="ico" aria-label="Search">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
       </button>
-      <a class="ico" href="#/track" aria-label="Track my order">
+      <a class="ico track" href="#/track" aria-label="Track my order">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
       </a>
       <a class="ico cart" href="#/cart" aria-label="Cart">
@@ -684,7 +700,9 @@ body.home{padding-top:0}
     return '' +
     '<section class="split">' +
       '<a class="half" href="#/histomer">' +
-        '<img src="images/hero-histomer.jpg" alt="Histomer HydraX4 cleansing balm, serum, cream and masks arranged on marble" width="1024" height="1024" fetchpriority="high">' +
+        '<picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" ' +
+          'srcset="images/hero-histomer-640.webp 640w, images/hero-histomer-1024.webp 1024w">' +
+          '<img src="images/hero-histomer.jpg" alt="Histomer HydraX4 cleansing balm, serum, cream and masks arranged on marble" width="1024" height="1024" fetchpriority="high"></picture>' +
         '<div class="half-in">' +
           '<span class="eyebrow">Histomer &middot; Milano</span>' +
           '<h2>The professional line, kept in house.</h2>' +
@@ -693,7 +711,9 @@ body.home{padding-top:0}
         '</div>' +
       '</a>' +
       '<a class="half sale" href="#/brands">' +
-        '<img src="images/hero-brands.jpg" alt="La Roche-Posay, Vichy, CeraVe, Bioderma and Eucerin products on a marble counter" width="1024" height="1024" fetchpriority="high">' +
+        '<picture><source type="image/webp" sizes="(max-width:900px) 100vw, 50vw" ' +
+          'srcset="images/hero-brands-640.webp 640w, images/hero-brands-1024.webp 1024w">' +
+          '<img src="images/hero-brands.jpg" alt="La Roche-Posay, Vichy, CeraVe, Bioderma and Eucerin products on a marble counter" width="1024" height="1024" fetchpriority="high"></picture>' +
         '<div class="half-in">' +
           '<span class="eyebrow">Ten pharmacy houses</span>' +
           '<h2>Up to <em>26% below</em> pharmacy prices.</h2>' +
@@ -1152,21 +1172,31 @@ body.home{padding-top:0}
   /* ========== fixed top bar ========== */
 
   var topbar = document.getElementById('topbar');
+  var overLimit = 0;   // measured once per layout, never during a scroll
+  var queued = false;
 
   // pages below the bar are offset by its real height; the home hero runs under it
   function syncTop() {
-    document.documentElement.style.setProperty('--top-h', topbar.offsetHeight + 'px');
+    var h = topbar.offsetHeight;
+    document.documentElement.style.setProperty('--top-h', h + 'px');
+    var hero = document.querySelector('.split');
+    overLimit = hero ? hero.offsetHeight - h - 8 : 0;
     syncOver();
   }
 
   // the bar keeps its ink fill except while it is sitting over the hero imagery
   function syncOver() {
-    var hero = document.querySelector('.split');
-    if (!hero) { topbar.classList.remove('over'); return; }
-    topbar.classList.toggle('over', window.pageYOffset < hero.offsetHeight - topbar.offsetHeight - 8);
+    topbar.classList.toggle('over', overLimit > 0 && window.pageYOffset < overLimit);
   }
 
-  window.addEventListener('scroll', syncOver);
+  // scrolling only reads pageYOffset, and only once a frame — no reflow on touch
+  window.addEventListener('scroll', function () {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { queued = false; syncOver(); });
+  }, { passive: true });
+
+  // the mobile URL bar collapsing fires resize, which re-measures the hero
   window.addEventListener('resize', syncTop);
 
   /* ========== router ========== */
