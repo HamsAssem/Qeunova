@@ -310,9 +310,8 @@ body.home{padding-top:0}
   .half p{display:none}
   .g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-  .strip{grid-template-columns:1fr}
-  .strip div{padding:20px 16px}
-  .strip div+div{border-left:none;border-top:1px solid #241F18}
+  /* stays three across — the label stacks under its icon to fit the column */
+  .strip div{flex-direction:column;gap:7px;padding:18px 8px;font-size:11px;line-height:1.35;text-align:center}
   .pdp{flex-direction:column;padding:32px 0}
   .details{grid-template-columns:1fr;gap:40px}
   .two{flex-direction:column}
@@ -350,9 +349,9 @@ body.home{padding-top:0}
   .logo{gap:10px}
   .mono{width:34px;height:34px;font-size:17px}
   .ico.track{display:none}
-  /* a little under the full screen: eases the crop on a narrow column and
-     lets the strip below peek, so the page reads as scrollable */
-  .split{height:82svh;min-height:440px;max-height:none}
+  /* short panels: the photograph stays a banner rather than filling the
+     screen, and the narrower crop shows more of each shot */
+  .split{height:clamp(380px,56svh,520px);min-height:0;max-height:none}
   /* each column is only ~half the viewport, so the copy scales to fit it
      rather than the page gutter */
   .half-in{gap:9px;padding:0 14px 22px}
@@ -384,7 +383,7 @@ body.home{padding-top:0}
   .page-head p{margin-top:10px}
   .marquee .brand-tile{flex:0 0 172px;margin-right:12px}
   .brand-tile{min-height:104px}
-  .strip div{padding:15px 16px;font-size:13px}
+  .strip div{padding:14px 6px;font-size:10px;gap:6px}
   .pdp{padding:24px 0;gap:24px}
   .details{gap:28px}
   .two{padding:32px 0;gap:24px}
