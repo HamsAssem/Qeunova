@@ -349,22 +349,14 @@ body.home{padding-top:0}
   .logo{gap:10px}
   .mono{width:34px;height:34px;font-size:17px}
   .ico.track{display:none}
-  /* A half-width column is far taller than it is wide, so cover-fitting a
-     square photo into it cropped the sides away. Below 640 the image gets
-     its own square block at full width, uncropped, and the copy drops
-     underneath it onto the ink instead of overlaying it. */
-  body.home{padding-top:var(--top-h,115px)}
-  .split{height:auto;min-height:0;max-height:none}
-  .half{flex-direction:column;align-items:stretch}
-  .half+.half{border-left-color:#241F18}
-  .half picture{display:block}
-  .half img{position:static;width:100%;height:auto;aspect-ratio:1/1}
-  .half::after{content:none}
-  .half-in{flex:1;gap:9px;padding:14px 12px 18px}
+  /* short panels: the photograph stays a banner rather than filling the
+     screen, with the copy overlaid on the scrim as on desktop */
+  .split{height:clamp(380px,56svh,520px);min-height:0;max-height:none}
+  /* each column is only ~half the viewport, so the copy scales to fit it
+     rather than the page gutter */
+  .half-in{gap:9px;padding:0 14px 22px}
   .half .eyebrow{font-size:9px;letter-spacing:.14em}
-  /* auto margin pins both CTAs to the bottom so they line up across the
-     two columns, whose headlines run to different depths */
-  .half .btn{height:42px;padding:0 12px;font-size:10px;letter-spacing:.1em;margin-top:auto}
+  .half .btn{height:42px;padding:0 12px;font-size:10px;letter-spacing:.1em;margin-top:5px}
   .pinfo h1{font-size:28px}
   .big-now{font-size:30px}
   .price{flex-direction:column;align-items:flex-start;gap:2px}
@@ -1189,10 +1181,9 @@ body.home{padding-top:0}
 
   // Transparent only while the hero is untouched. Holding it clear for the whole
   // hero let the panel copy scroll visibly through the bar, so it takes its ink
-  // back as soon as the page moves. Below 640 the hero sits under the bar rather
-  // than behind it, so there is nothing to be transparent over.
+  // back as soon as the page moves.
   function syncOver() {
-    topbar.classList.toggle('over', hasHero && window.innerWidth > 640 && window.pageYOffset < 24);
+    topbar.classList.toggle('over', hasHero && window.pageYOffset < 24);
   }
 
   // scrolling only reads pageYOffset, and only once a frame — no reflow on touch
