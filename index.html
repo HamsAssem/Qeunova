@@ -10,12 +10,12 @@
 <style>
 :root{
   color-scheme: light;
-  --ink:#1E332C; --ink2:#16261F; --line:#2F4A40;
-  --gold:#8FC7B1; --goldD:#2E6A57; --goldL:#B9DCCD;
-  --cream:#FAF7F2; --cream2:#F1F5F1; --card:#FFFFFF;
-  --lineL:#E2E6DF; --lineL2:#EAEDE6; --field:#D6DCD3;
-  --text:#1A2320; --body:#43524C; --muted:#65736C; --muted2:#84918A;
-  --dim:#A9BAB1; --dim2:#93A79D; --dim3:#6E7C75;
+  --ink:#0B3B2E; --ink2:#072B21; --line:#14513E;
+  --gold:#D4AF37; --goldD:#836318; --goldL:#EBD9A4;
+  --cream:#FAF7F2; --cream2:#F4EFE4; --card:#FFFFFF;
+  --lineL:#E6DFD2; --lineL2:#EDE7DC; --field:#DCD3C2;
+  --text:#17211C; --body:#454F49; --muted:#636D67; --muted2:#868F89;
+  --dim:#ADA894; --dim2:#9A9382; --dim3:#7D7565;
   --serif:'Marcellus',Georgia,'Times New Roman',serif;
   --sans:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
   --pad: 72px;
@@ -28,35 +28,35 @@ html{scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust
 body{margin:0;font-family:var(--sans);background:var(--cream);color:var(--text);font-size:16px;line-height:1.5}
 img{max-width:100%}
 a{color:var(--goldD);text-decoration:none}
-a:hover{color:#1F4F3E}
+a:hover{color:#6F5416}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.15}
 button{font-family:var(--sans)}
-input,select,textarea{font-family:var(--sans);font-size:15px;color:#22302B}
+input,select,textarea{font-family:var(--sans);font-size:15px;color:#232B27}
 .wrap{max-width:1440px;margin:0 auto;padding:0 var(--pad)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- header ---------- */
 /* the scrim sits on the bar itself; it only shows once the children go transparent */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:40;padding-top:env(safe-area-inset-top,0px);
-  background:linear-gradient(180deg,rgba(16,28,23,.80) 0%,rgba(16,28,23,.68) 46%,rgba(16,28,23,.42) 78%,rgba(16,28,23,0) 100%)}
+  background:linear-gradient(180deg,rgba(7,34,26,.80) 0%,rgba(7,34,26,.68) 46%,rgba(7,34,26,.42) 78%,rgba(7,34,26,0) 100%)}
 body{padding-top:var(--top-h,133px)}
 body.home{padding-top:0}
-.announce{background:var(--ink2);color:#93A79D;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:14px 20px;transition:background-color .35s ease,color .35s ease}
+.announce{background:var(--ink2);color:#9A9382;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:14px 20px;transition:background-color .35s ease,color .35s ease}
 .hdr{background:var(--ink);border-bottom:1px solid var(--line);transition:background-color .35s ease,border-color .35s ease}
 /* over the hero the bar drops its fill and rides on the scrim instead */
-.topbar.over .announce{background-color:transparent;color:#DCE7E1}
-.topbar.over .hdr{background-color:transparent;border-bottom-color:rgba(237,243,239,.16)}
+.topbar.over .announce{background-color:transparent;color:#E6DFCE}
+.topbar.over .hdr{background-color:transparent;border-bottom-color:rgba(243,239,228,.16)}
 .hdr-in{display:flex;align-items:center;gap:40px;height:88px}
 .logo{display:flex;align-items:center;gap:16px;flex:0 0 auto}
 .mono{width:44px;height:44px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--gold)}
-.word{font-family:var(--serif);font-size:21px;letter-spacing:.34em;color:#EDF3EF}
+.word{font-family:var(--serif);font-size:21px;letter-spacing:.34em;color:#F3EFE4}
 .nav{display:flex;align-items:center;gap:30px;font-size:14px;letter-spacing:.06em;min-width:0}
-.nav a{color:#CFDCD5;white-space:nowrap}
+.nav a{color:#D6CFBD;white-space:nowrap}
 .nav a:hover,.nav a.on{color:var(--gold)}
 .icons{display:flex;align-items:center;gap:4px;margin-left:auto;flex:0 0 auto}
 .ico.cart{width:auto;padding:0 4px 0 14px;gap:10px}
 .cart-lbl{font-size:13px;letter-spacing:.08em}
-.ico{width:44px;height:44px;background:none;border:none;color:#CFDCD5;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.ico{width:44px;height:44px;background:none;border:none;color:#D6CFBD;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
 .ico:hover{color:var(--gold)}
 .bdg{position:absolute;top:4px;right:2px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--gold);color:var(--ink);font-size:10px;display:flex;align-items:center;justify-content:center}
 .burger{display:none}
@@ -66,14 +66,14 @@ body.home{padding-top:0}
 .drawer.open{display:flex}
 .drawer-top{height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 8px}
 .drawer-body{flex:1;overflow-y:auto;padding:24px 20px}
-.drawer-body .big{display:flex;align-items:center;justify-content:space-between;height:52px;border-bottom:1px solid #243B33;font-family:var(--serif);font-size:22px;color:#EDF3EF}
+.drawer-body .big{display:flex;align-items:center;justify-content:space-between;height:52px;border-bottom:1px solid #104635;font-family:var(--serif);font-size:22px;color:#F3EFE4}
 .dlabel{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:26px 0 14px}
 .dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.dgrid a{height:58px;border:1px solid #243B33;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#DCE7E1;font-size:13px;text-align:center;line-height:1.2}
+.dgrid a{height:58px;border:1px solid #104635;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#E6DFCE;font-size:13px;text-align:center;line-height:1.2}
 .dgrid a span{font-size:10px;color:var(--dim3)}
 
 /* ---------- sections ---------- */
-.dark{background:var(--ink);color:#EDF3EF}
+.dark{background:var(--ink);color:#F3EFE4}
 .light{background:var(--card)}
 .sand{background:var(--cream)}
 /* pale sage — page heads, the trust strip and the closing bands, all of which
@@ -97,9 +97,9 @@ body.home{padding-top:0}
 /* ---------- split hero ---------- */
 /* two columns at every width — the panels never stack */
 .split{display:grid;grid-template-columns:1fr 1fr;height:100vh;height:100svh;min-height:580px;max-height:940px;background:var(--ink)}
-.half{position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#EDF3EF;-webkit-tap-highlight-color:transparent}
-.half+.half{border-left:1px solid rgba(16,28,23,.25)}
-.half:hover{color:#EDF3EF}
+.half{position:relative;overflow:hidden;display:flex;align-items:flex-end;color:#F3EFE4;-webkit-tap-highlight-color:transparent}
+.half+.half{border-left:1px solid rgba(7,34,26,.25)}
+.half:hover{color:#F3EFE4}
 .half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.6,.2,1)}
 /* gated so a tap on a phone doesn't leave the panel stuck zoomed */
 @media (hover:hover){.half:hover img{transform:scale(1.04)}}
@@ -107,15 +107,15 @@ body.home{padding-top:0}
 /* scrim: dark under the bar, clear across the product, near-solid under the copy
    so the eyebrow and headline stay legible over bright marble */
 .half::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(16,28,23,.30) 0%,rgba(16,28,23,0) 24%,rgba(16,28,23,.12) 40%,rgba(16,28,23,.80) 70%,rgba(16,28,23,.96) 100%)}
+  background:linear-gradient(180deg,rgba(7,34,26,.30) 0%,rgba(7,34,26,0) 24%,rgba(7,34,26,.12) 40%,rgba(7,34,26,.80) 70%,rgba(7,34,26,.96) 100%)}
 .half-in{position:relative;z-index:2;width:100%;padding:0 var(--pad) clamp(34px,4vw,56px);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
 /* the pale gold reads on the scrim where the mid gold does not */
 .half .eyebrow{color:var(--goldL)}
-.half h2{font-size:clamp(17px,2.9vw,44px);color:#EDF3EF;max-width:16ch}
-.half p{margin:0;font-size:15px;line-height:1.65;color:#C3D3CB;max-width:46ch}
+.half h2{font-size:clamp(17px,2.9vw,44px);color:#F3EFE4;max-width:16ch}
+.half p{margin:0;font-size:15px;line-height:1.65;color:#C9C2AF;max-width:46ch}
 .half .btn{margin-top:10px}
-.half .btn-ghost{border-color:rgba(237,243,239,.55);color:#EDF3EF}
-.half .btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(16,28,23,.4)}
+.half .btn-ghost{border-color:rgba(243,239,228,.55);color:#F3EFE4}
+.half .btn-ghost:hover{border-color:var(--gold);color:var(--gold);background:rgba(7,34,26,.4)}
 /* the sale half shouts — its headline runs larger and the figure is picked out in gold */
 .half.sale h2{font-size:clamp(20px,4.1vw,60px);max-width:16ch}
 .half.sale h2 em{font-style:normal;color:var(--gold)}
@@ -124,15 +124,15 @@ body.home{padding-top:0}
 /* ---------- buttons ---------- */
 .btn{height:54px;padding:0 34px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:.12em;text-transform:uppercase;border:1px solid transparent;cursor:pointer}
 .btn-gold{background:var(--gold);color:var(--ink)}
-.btn-gold:hover{background:#A8D8C2;color:var(--ink)}
-.btn-ghost{border-color:#4A6459;color:#DCE7E1;background:none}
+.btn-gold:hover{background:#E0C158;color:var(--ink)}
+.btn-ghost{border-color:#2A6B54;color:#E6DFCE;background:none}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
 .btn-gold-o{border-color:var(--gold);color:var(--gold);background:none}
 .btn-gold-o:hover{background:var(--gold);color:var(--ink)}
-.btn-ink{background:var(--ink);color:#EDF3EF;border-color:var(--ink)}
-.btn-ink:hover{background:#000;color:#EDF3EF}
+.btn-ink{background:var(--ink);color:#F3EFE4;border-color:var(--ink)}
+.btn-ink:hover{background:#000;color:#F3EFE4}
 .btn-ink-o{border-color:var(--ink);color:var(--ink);background:none}
-.btn-ink-o:hover{background:var(--ink);color:#EDF3EF}
+.btn-ink-o:hover{background:var(--ink);color:#F3EFE4}
 .btn-full{width:100%}
 
 /* ---------- strips ---------- */
@@ -166,7 +166,7 @@ body.home{padding-top:0}
 .brand-tile .bc{font-size:12px;color:var(--muted)}
 .brand-tile .bt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--goldD);border-top:1px solid var(--lineL);padding-top:10px;margin-top:4px}
 @media (hover:hover){
-  .brand-tile:hover{border-color:var(--acc,var(--ink));transform:translateY(-3px);box-shadow:0 10px 26px rgba(26,35,32,.11)}
+  .brand-tile:hover{border-color:var(--acc,var(--ink));transform:translateY(-3px);box-shadow:0 10px 26px rgba(23,33,28,.11)}
   .brand-tile:hover .bt-shot{opacity:.34;transform:scale(1.04)}
   .brand-tile:hover .bt-mark{opacity:.18}
 }
@@ -189,9 +189,9 @@ body.home{padding-top:0}
 .side{flex:0 0 280px}
 .fgroup{border-top:1px solid var(--lineL);padding-top:22px;margin-top:22px;display:flex;flex-direction:column;gap:12px}
 .fgroup h3{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.frow{display:flex;align-items:center;gap:11px;min-height:32px;font-size:14px;color:#22302B}
+.frow{display:flex;align-items:center;gap:11px;min-height:32px;font-size:14px;color:#232B27}
 .frow input{width:16px;height:16px;accent-color:var(--gold)}
-.frow .n{margin-left:auto;font-size:12px;color:#8B9A92}
+.frow .n{margin-left:auto;font-size:12px;color:#8C948E}
 .field{height:50px;width:100%;border:1px solid var(--field);background:var(--card);padding:0 13px}
 .toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--lineL);padding-bottom:16px;margin-bottom:28px;flex-wrap:wrap}
 .mfilter{display:none;gap:10px}
@@ -212,16 +212,16 @@ body.home{padding-top:0}
 .chip{font-size:12px;letter-spacing:.1em;color:var(--goldD);border:1px solid var(--goldL);padding:5px 10px}
 .stock{display:flex;align-items:center;gap:9px;font-size:14px;color:#2A7A4B}
 .qty{display:flex;align-items:center;border:1px solid var(--field);height:56px;background:var(--card)}
-.qty button{width:48px;height:54px;background:none;border:none;font-size:20px;color:#22302B;cursor:pointer}
+.qty button{width:48px;height:54px;background:none;border:none;font-size:20px;color:#232B27;cursor:pointer}
 .qty span{width:44px;text-align:center;font-size:16px}
 .trust{background:var(--cream);border:1px solid var(--lineL);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
-.trust div{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:#22302B;line-height:1.5}
+.trust div{display:flex;align-items:flex-start;gap:11px;font-size:14px;color:#232B27;line-height:1.5}
 .trust svg{flex:0 0 auto;margin-top:2px}
 .details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px}
 .details h2{font-size:24px;margin-bottom:16px}
 .details p{margin:0 0 16px;font-size:15px;line-height:1.8;color:var(--body)}
 .step{display:flex;gap:14px;margin-bottom:14px}
-.num{width:26px;height:26px;flex:0 0 auto;border:1px solid #C9D5CD;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--goldD)}
+.num{width:26px;height:26px;flex:0 0 auto;border:1px solid #D8CCB4;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--goldD)}
 .ing{border-bottom:1px solid var(--lineL);padding-bottom:12px;margin-bottom:12px}
 .ing b{display:block;font-weight:400;font-size:15px;color:var(--text)}
 .ing span{font-size:13px;color:var(--muted);line-height:1.5}
@@ -250,10 +250,10 @@ body.home{padding-top:0}
 /* ---------- misc ---------- */
 .stat{display:flex;flex-direction:column;gap:4px}
 .stat b{font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:400}
-.stat span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8FA298}
+.stat span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#948D7C}
 .band{display:flex;align-items:center;justify-content:space-between;gap:48px;padding:72px 0}
-.band h2{font-size:46px;color:#EDF3EF;margin-bottom:18px}
-.band p{color:#A8BBB1;font-size:16px;line-height:1.75;margin:0 0 24px;max-width:520px}
+.band h2{font-size:46px;color:#F3EFE4;margin-bottom:18px}
+.band p{color:#ADA894;font-size:16px;line-height:1.75;margin:0 0 24px;max-width:520px}
 /* ---------- histomer feature ---------- */
 .house{display:grid;grid-template-columns:1.06fr 1fr;align-items:stretch;min-height:clamp(460px,58vw,620px)}
 .house-art{position:relative;overflow:hidden}
@@ -261,13 +261,13 @@ body.home{padding-top:0}
 /* framed just off centre so the face and the bottle both survive the crop */
 .house-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 34%;display:block}
 /* a hairline of gold where the photograph meets the copy */
-.house-art::after{content:'';position:absolute;top:0;bottom:0;right:0;width:1px;background:linear-gradient(180deg,transparent,rgba(143,199,177,.45) 42%,transparent)}
+.house-art::after{content:'';position:absolute;top:0;bottom:0;right:0;width:1px;background:linear-gradient(180deg,transparent,rgba(212,175,55,.45) 42%,transparent)}
 .house-txt{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:18px;
   padding:clamp(44px,5vw,76px) var(--pad) clamp(44px,5vw,76px) clamp(30px,4vw,64px)}
-.house-txt h2{font-size:clamp(28px,3.3vw,46px);color:#EDF3EF;max-width:15ch}
-.house-txt p{margin:0;font-size:16px;line-height:1.75;color:#A8BBB1;max-width:46ch}
+.house-txt h2{font-size:clamp(28px,3.3vw,46px);color:#F3EFE4;max-width:15ch}
+.house-txt p{margin:0;font-size:16px;line-height:1.75;color:#ADA894;max-width:46ch}
 .house-stats{display:flex;flex-wrap:wrap;gap:clamp(22px,3vw,52px);width:100%;
-  border-top:1px solid #243B33;border-bottom:1px solid #243B33;padding:20px 0;margin-top:4px}
+  border-top:1px solid #104635;border-bottom:1px solid #104635;padding:20px 0;margin-top:4px}
 .house-txt .btn{margin-top:4px}
 
 .center-band{text-align:center;padding:80px 20px;display:flex;flex-direction:column;align-items:center;gap:16px}
@@ -290,13 +290,13 @@ body.home{padding-top:0}
 .meta3{border-top:1px solid var(--lineL);border-bottom:1px solid var(--lineL);padding:26px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .meta3 span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:6px}
 .meta3 b{font-family:var(--serif);font-size:21px;font-weight:400}
-.note{background:var(--cream);border:1px solid var(--lineL);padding:18px 22px;display:flex;align-items:center;gap:12px;font-size:14px;color:#22302B}
+.note{background:var(--cream);border:1px solid var(--lineL);padding:18px 22px;display:flex;align-items:center;gap:12px;font-size:14px;color:#232B27}
 .pager{display:flex;justify-content:center;gap:10px;margin-top:40px}
-.pager a,.pager span{min-width:44px;height:44px;padding:0 16px;border:1px solid var(--field);display:flex;align-items:center;justify-content:center;font-size:14px;color:#22302B}
-.pager .on{background:var(--ink);border-color:var(--ink);color:#EDF3EF}
+.pager a,.pager span{min-width:44px;height:44px;padding:0 16px;border:1px solid var(--field);display:flex;align-items:center;justify-content:center;font-size:14px;color:#232B27}
+.pager .on{background:var(--ink);border-color:var(--ink);color:#F3EFE4}
 
 /* ---------- footer ---------- */
-.ftr{background:var(--ink2);border-top:1px solid #243B33;padding:64px 0 0}
+.ftr{background:var(--ink2);border-top:1px solid #104635;padding:64px 0 0}
 .ftr-in{display:flex;gap:96px;flex-wrap:wrap}
 .ftr-brand{flex:0 0 340px}
 .ftr-brand p{font-size:14px;line-height:1.75;color:var(--dim2);margin:18px 0 0}
@@ -306,9 +306,9 @@ body.home{padding-top:0}
 .fcol a:hover{color:var(--gold)}
 .nlwrap{flex:1 1 280px;display:flex;flex-direction:column;gap:13px;min-width:260px}
 .nlrow{display:flex}
-.nlrow input{height:48px;flex:1;background:var(--ink);border:1px solid #243B33;color:#DCE7E1;padding:0 14px;min-width:0}
+.nlrow input{height:48px;flex:1;background:var(--ink);border:1px solid #104635;color:#E6DFCE;padding:0 14px;min-width:0}
 .nlrow button{height:48px;padding:0 22px;background:var(--gold);border:none;color:var(--ink);font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.ftr-bot{margin-top:48px;border-top:1px solid #243B33;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;color:var(--dim3);flex-wrap:wrap}
+.ftr-bot{margin-top:48px;border-top:1px solid #104635;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;color:var(--dim3);flex-wrap:wrap}
 
 /* ---------- mobile bar ---------- */
 .mbar{display:none;position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--lineL);padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));align-items:center;gap:14px;z-index:50}
@@ -368,7 +368,7 @@ body.home{padding-top:0}
   .house{grid-template-columns:1fr;min-height:0}
   .house-art img{position:static;width:100%;height:auto;aspect-ratio:4/3;object-position:50% 30%}
   .house-art::after{top:auto;bottom:0;left:0;right:0;width:auto;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(143,199,177,.45) 45%,transparent)}
+    background:linear-gradient(90deg,transparent,rgba(212,175,55,.45) 45%,transparent)}
   .house-txt{padding:32px var(--pad) 40px;gap:15px}
   .house-txt h2{font-size:30px}
   .house-stats{gap:26px;padding:16px 0}
@@ -507,14 +507,14 @@ body.home{padding-top:0}
     <span style="width:44px"></span>
   </div>
   <div class="drawer-body">
-    <a class="big" href="#/collection/cerave">Best sellers <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6E7C75" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
-    <a class="big" href="#/brands">All brands <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6E7C75" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a class="big" href="#/collection/cerave">Best sellers <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D7565" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
+    <a class="big" href="#/brands">All brands <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7D7565" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg></a>
     <div class="dlabel">Brand collections</div>
     <div class="dgrid" id="drawerBrands"></div>
-    <div style="margin-top:28px;padding-top:22px;border-top:1px solid #243B33;display:flex;justify-content:space-between">
-      <a href="#/track" style="color:#93A79D;font-size:14px">Track order</a>
-      <a href="#/help" style="color:#93A79D;font-size:14px">Help</a>
-      <a href="#/about" style="color:#93A79D;font-size:14px">About</a>
+    <div style="margin-top:28px;padding-top:22px;border-top:1px solid #104635;display:flex;justify-content:space-between">
+      <a href="#/track" style="color:#9A9382;font-size:14px">Track order</a>
+      <a href="#/help" style="color:#9A9382;font-size:14px">Help</a>
+      <a href="#/about" style="color:#9A9382;font-size:14px">About</a>
     </div>
   </div>
 </div>
@@ -696,7 +696,7 @@ body.home{padding-top:0}
     var bx = (120 - bw) / 2, by = 150 - bh;
     var cx = (120 - cw) / 2, cy = by - ch;
     var ly = by + Math.round(bh * 0.45);
-    return '<svg width="' + size + '" height="' + Math.round(size * 1.33) + '" viewBox="0 0 120 160" fill="none" stroke="' + (stroke || '#AFC0B6') + '" stroke-width="2" aria-hidden="true">' +
+    return '<svg width="' + size + '" height="' + Math.round(size * 1.33) + '" viewBox="0 0 120 160" fill="none" stroke="' + (stroke || '#C0B49C') + '" stroke-width="2" aria-hidden="true">' +
       '<rect x="' + cx + '" y="' + cy + '" width="' + cw + '" height="' + ch + '" rx="2"/>' +
       '<rect x="' + bx + '" y="' + by + '" width="' + bw + '" height="' + bh + '" rx="' + br + '"/>' +
       '<line x1="' + (bx + 9) + '" y1="' + ly + '" x2="' + (bx + bw - 9) + '" y2="' + ly + '"/></svg>';
@@ -706,7 +706,7 @@ body.home{padding-top:0}
   function iconCash(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="3"/></svg>'; }
   function iconTruck(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><path d="M2 7h11v9H2z"/><path d="M13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>'; }
   function iconShield(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>'; }
-  function stars() { return '<svg width="94" height="18" viewBox="0 0 100 20" fill="#2E6A57" aria-hidden="true"><circle cx="8" cy="10" r="4"/><circle cx="28" cy="10" r="4"/><circle cx="48" cy="10" r="4"/><circle cx="68" cy="10" r="4"/><circle cx="88" cy="10" r="4"/></svg>'; }
+  function stars() { return '<svg width="94" height="18" viewBox="0 0 100 20" fill="#836318" aria-hidden="true"><circle cx="8" cy="10" r="4"/><circle cx="28" cy="10" r="4"/><circle cx="48" cy="10" r="4"/><circle cx="68" cy="10" r="4"/><circle cx="88" cy="10" r="4"/></svg>'; }
 
   function priceBlock(p) {
     if (p.house) return '<div class="price"><span class="now">' + egp(p.now) + '</span></div>';
@@ -717,7 +717,7 @@ body.home{padding-top:0}
     return '<a class="pcard" href="#/product/' + p.id + '">' +
       '<div class="pshot' + (p.house ? ' hist' : '') + '">' +
         (p.house ? '' : '<span class="save">&minus;' + p.save + '%</span>') +
-        shot(p.shape, 96, p.house ? '#A3B7AC' : '#AFC0B6') +
+        shot(p.shape, 96, p.house ? '#B3A78E' : '#C0B49C') +
       '</div>' +
       '<div class="pbody">' +
         '<span class="pbrand">' + p.brand + (p.house ? ' &middot; ' + p.line : '') + '</span>' +
@@ -729,7 +729,7 @@ body.home{padding-top:0}
 
   function brandTile(b) {
     var href = b.slug === 'histomer' ? '#/histomer' : '#/collection/' + b.slug;
-    var m = MARK[b.slug] || ['#8FC7B1', b.name.charAt(0).toUpperCase(), 0];
+    var m = MARK[b.slug] || ['#D4AF37', b.name.charAt(0).toUpperCase(), 0];
     var back = m[2]
       ? '<img class="bt-shot" src="images/brand-' + b.slug + '.webp" alt="" aria-hidden="true" loading="lazy">'
       : '<span class="bt-mark" aria-hidden="true">' + m[1] + '</span>';
@@ -764,9 +764,9 @@ body.home{padding-top:0}
 
   function trustStrip() {
     return '<div class="strip">' +
-      '<div>' + iconCash('#2E6A57') + 'Cash on delivery </div>' +
-      '<div>' + iconShield('#2E6A57') + 'Authenticity guaranteed</div>' +
-      '<div>' + iconTruck('#2E6A57') + 'Delivery across Egypt</div></div>';
+      '<div>' + iconCash('#836318') + 'Cash on delivery </div>' +
+      '<div>' + iconShield('#836318') + 'Authenticity guaranteed</div>' +
+      '<div>' + iconTruck('#836318') + 'Delivery across Egypt</div></div>';
   }
 
   /* ========== pages ========== */
@@ -908,7 +908,7 @@ body.home{padding-top:0}
           '<span class="stat"><b>100%</b><span>Made in Italy</span></span>' +
         '</div>' +
       '</div>' +
-      '<div style="display:flex;gap:32px">' + shot([40,96,14,34,3],92,'#6B8579') + shot([58,58,62,12,4],92,'#5B7268') + '</div>' +
+      '<div style="display:flex;gap:32px">' + shot([40,96,14,34,3],92,'#3A7A63') + shot([58,58,62,12,4],92,'#2F6B55') + '</div>' +
     '</div></section>' +
     '<section class="sand sec"><div class="wrap">' +
       '<div class="sec-head"><h2>The full line</h2>' +
@@ -925,7 +925,7 @@ body.home{padding-top:0}
     if (!p) return pageMissing();
     var related = PRODUCTS.filter(function (x) { return x.id !== p.id && x.house === p.house; }).slice(0, 4);
     var shapes = [p.shape, [46,98,18,26,4], [40,88,20,12,5], [58,58,62,12,4]];
-    var tone = p.house ? '#A3B7AC' : '#AFC0B6';
+    var tone = p.house ? '#B3A78E' : '#C0B49C';
 
     var priceArea = p.house
       ? '<div class="pricebox"><span class="big-now">' + egp(p.now) + '</span><span style="font-size:13px;color:var(--muted)">Price includes VAT.</span></div>'
@@ -949,7 +949,7 @@ body.home{padding-top:0}
           shot(p.shape, 200, tone) +
         '</div>' +
         '<div class="thumbs">' + shapes.map(function (s, i) {
-          return '<span class="thumb' + (i === 0 ? ' on' : '') + '">' + shot(s, 34, '#BCCCC3') + '</span>';
+          return '<span class="thumb' + (i === 0 ? ' on' : '') + '">' + shot(s, 34, '#CCC1A8') + '</span>';
         }).join('') + '</div>' +
       '</div>' +
       '<div class="pinfo">' +
@@ -965,9 +965,9 @@ body.home{padding-top:0}
         '</div>' +
         '<a class="btn btn-ink-o btn-full" href="#/checkout">Buy now &middot; pay on delivery</a>' +
         '<div class="trust">' +
-          '<div>' + iconCash('#2E6A57') + 'Cash on delivery — pay the courier at your door</div>' +
-          '<div>' + iconTruck('#2E6A57') + 'Cairo &amp; Giza 1–2 days &middot; other governorates 2–4 days</div>' +
-          '<div>' + iconShield('#2E6A57') + 'Batch code and expiry checked before dispatch</div>' +
+          '<div>' + iconCash('#836318') + 'Cash on delivery — pay the courier at your door</div>' +
+          '<div>' + iconTruck('#836318') + 'Cairo &amp; Giza 1–2 days &middot; other governorates 2–4 days</div>' +
+          '<div>' + iconShield('#836318') + 'Batch code and expiry checked before dispatch</div>' +
         '</div>' +
       '</div>' +
     '</div></section>' +
@@ -1013,7 +1013,7 @@ body.home{padding-top:0}
           '<span>' + t.count + ' items</span><span>Line total</span></div>' +
         t.lines.map(function (l) {
           return '<div class="citem">' +
-            '<span class="cthumb">' + shot(l.p.shape, 44, '#AFC0B6') + '</span>' +
+            '<span class="cthumb">' + shot(l.p.shape, 44, '#C0B49C') + '</span>' +
             '<div style="flex:1;min-width:0">' +
               '<div class="pbrand">' + l.p.brand + '</div>' +
               '<a href="#/product/' + l.p.id + '" style="font-size:17px;color:var(--text);display:block;margin:6px 0">' + l.p.name + '</a>' +
@@ -1041,7 +1041,7 @@ body.home{padding-top:0}
           '<div class="line"><span>Cash on delivery fee</span><span>EGP 0</span></div>' +
           '<div class="total"><span>Total to pay on delivery</span><b>' + egp(t.sub >= 1500 ? t.sub : t.sub + 60) + '</b></div>' +
           '<a class="btn btn-ink btn-full" href="#/checkout">Checkout</a>' +
-          '<div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--muted)">' + iconCash('#2E6A57', 15) + 'Cash on delivery</div>' +
+          '<div style="display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--muted)">' + iconCash('#836318', 15) + 'Cash on delivery</div>' +
         '</div>' +
       '</div>' +
     '</div></section>';
@@ -1075,7 +1075,7 @@ body.home{padding-top:0}
           '<div class="pay"><input id="cod" type="radio" name="pay" checked>' +
             '<div><label for="cod" style="font-size:17px;color:var(--text)">Cash on delivery</label>' +
             '<div style="font-size:14px;color:var(--muted);line-height:1.65;margin-top:7px">Pay the courier in cash when your order reaches your door. Please have the exact amount ready where possible — couriers may not carry change.</div></div>' +
-            '<span style="margin-left:auto">' + iconCash('#2E6A57', 26) + '</span></div>' +
+            '<span style="margin-left:auto">' + iconCash('#836318', 26) + '</span></div>' +
           '<span style="font-size:13px;color:var(--muted2)">Cash on delivery is currently the only payment method at QEUNOVA.</span>' +
         '</div>' +
       '</div>' +
@@ -1104,7 +1104,7 @@ body.home{padding-top:0}
     var t = cartTotals();
     var grand = t.sub >= 1500 ? t.sub : t.sub + 60;
     return '<section class="sand" style="padding:56px 0"><div class="wrap"><div class="confirm">' +
-      '<div style="text-align:center"><span class="ring">' + tick('#2E6A57', 30) + '</span>' +
+      '<div style="text-align:center"><span class="ring">' + tick('#836318', 30) + '</span>' +
       '<h1 style="font-size:40px;margin:18px 0 12px">Order confirmed</h1>' +
       '<p style="font-size:16px;color:var(--body);line-height:1.7;margin:0 auto;max-width:520px">Thank you, Nour. We\'ve sent the details to your email and our team will call you shortly to confirm the delivery window.</p></div>' +
       '<div class="meta3">' +
@@ -1118,7 +1118,7 @@ body.home{padding-top:0}
          'The courier arrives, you inspect the parcel, and you pay in cash.'].map(function (s, i) {
           return '<div class="step"><span class="num">' + (i + 1) + '</span><span style="font-size:15px;line-height:1.65;color:var(--body)">' + s + '</span></div>';
         }).join('') + '</div>' +
-      '<div class="note">' + iconCash('#2E6A57', 18) + 'Please have ' + egp(grand) + ' in cash ready for the courier. Exact change is appreciated.</div>' +
+      '<div class="note">' + iconCash('#836318', 18) + 'Please have ' + egp(grand) + ' in cash ready for the courier. Exact change is appreciated.</div>' +
       '<div style="display:flex;gap:16px;flex-wrap:wrap">' +
         '<a class="btn btn-ink" style="flex:1;min-width:200px" href="#/track">Track my order</a>' +
         '<a class="btn btn-ink-o" style="flex:1;min-width:200px" href="#/brands">Continue shopping</a></div>' +
@@ -1152,11 +1152,11 @@ body.home{padding-top:0}
           '<div style="font-family:var(--serif);font-size:26px;margin-top:6px">' + egp(6170) + '</div></div>' +
         '</div>' +
         '<div style="padding-top:8px">' + stages.map(function (s) {
-          return '<div class="timeline"><span class="dot ' + (s[2] ? 'done' : 'todo') + '">' + tick(s[2] ? '#2E6A57' : '#D6DCD3') + '</span>' +
+          return '<div class="timeline"><span class="dot ' + (s[2] ? 'done' : 'todo') + '">' + tick(s[2] ? '#836318' : '#DCD3C2') + '</span>' +
             '<div><div style="font-size:17px;color:' + (s[2] ? 'var(--text)' : 'var(--muted2)') + '">' + s[0] + '</div>' +
             '<div style="font-size:14px;color:var(--muted);line-height:1.6;margin-top:5px">' + s[1] + '</div></div></div>';
         }).join('') + '</div>' +
-        '<div class="note">' + iconCash('#2E6A57') + 'Your courier will call before arriving. Please have ' + egp(6170) + ' in cash ready.</div>' +
+        '<div class="note">' + iconCash('#836318') + 'Your courier will call before arriving. Please have ' + egp(6170) + ' in cash ready.</div>' +
       '</div></div>' +
     '</div></section>';
   }
@@ -1180,7 +1180,7 @@ body.home{padding-top:0}
       [['Authentic or nothing','Official distribution channels only. Every parcel is checked for batch code and expiry date before it is sealed.'],
        ['Below retail, always','Each product carries its original retail price beside ours, so the saving is visible rather than claimed.'],
        ['Pay at your door','Cash on delivery across every governorate. Inspect the parcel first, then hand over the money.']].map(function (x) {
-        return '<div><span style="width:48px;height:48px;border:1px solid var(--goldL);display:flex;align-items:center;justify-content:center;margin-bottom:14px">' + iconShield('#2E6A57', 22) + '</span>' +
+        return '<div><span style="width:48px;height:48px;border:1px solid var(--goldL);display:flex;align-items:center;justify-content:center;margin-bottom:14px">' + iconShield('#836318', 22) + '</span>' +
           '<h3 style="font-size:22px;margin-bottom:12px">' + x[0] + '</h3>' +
           '<p style="margin:0;font-size:15px;line-height:1.75;color:var(--body)">' + x[1] + '</p></div>';
       }).join('') +
@@ -1207,7 +1207,7 @@ body.home{padding-top:0}
             }).join('') + '</div>' +
           '<p style="font-size:15px;line-height:1.8;color:var(--body);margin:0">Orders placed before 4pm are dispatched the same working day. We call before the courier sets out to confirm someone will be there to receive the parcel.</p></div>' +
         '<div><h2 style="font-size:30px;margin-bottom:18px">Payment</h2>' +
-          '<div class="panel" style="flex-direction:row;align-items:center;gap:16px">' + iconCash('#2E6A57', 26) +
+          '<div class="panel" style="flex-direction:row;align-items:center;gap:16px">' + iconCash('#836318', 26) +
           '<span style="font-size:15px;line-height:1.7;color:var(--body)">Cash on delivery is our only payment method. There is no cash-on-delivery fee, and no prepayment is ever requested — if anyone asks you to transfer money before your parcel arrives, it is not us.</span></div></div>' +
         '<div><h2 style="font-size:30px;margin-bottom:18px">Returns</h2>' +
           '<p style="font-size:15px;line-height:1.8;color:var(--body);margin:0 0 16px">You may inspect the parcel in front of the courier before paying. If something is wrong — wrong item, damaged seal, short expiry — refuse the delivery and you pay nothing.</p>' +
@@ -1217,7 +1217,7 @@ body.home{padding-top:0}
            'Batch codes and expiry dates are recorded and checked before every dispatch.',
            'Nothing within six months of expiry is ever sold or shipped.',
            'If you ever doubt a product you received from us, send us the batch code and we will trace it for you.'].map(function (t) {
-            return '<div style="display:flex;gap:14px;margin-bottom:14px">' + tick('#2E6A57', 18) + '<span style="font-size:15px;line-height:1.7;color:var(--body)">' + t + '</span></div>';
+            return '<div style="display:flex;gap:14px;margin-bottom:14px">' + tick('#836318', 18) + '<span style="font-size:15px;line-height:1.7;color:var(--body)">' + t + '</span></div>';
           }).join('') + '</div>' +
         '<div><h2 style="font-size:30px;margin-bottom:18px">Contact us</h2>' +
           '<div style="display:flex;gap:20px;flex-wrap:wrap">' +
@@ -1228,8 +1228,8 @@ body.home{padding-top:0}
               '<div class="fld"><label for="cm">How can we help?</label><textarea id="cm" rows="3"></textarea></div>' +
               '<button class="btn btn-ink btn-full" type="button">Send message</button></div>' +
             '<div style="flex:0 1 300px;display:flex;flex-direction:column;gap:14px">' +
-              '<span class="panel" style="background:var(--ink);border-color:var(--ink);padding:20px 22px;flex-direction:row;align-items:center;gap:13px;color:#DCE7E1;font-size:15px">' +
-                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8FC7B1" stroke-width="1.4"><path d="M3 21l1.7-5A8.2 8.2 0 1 1 8 19.3L3 21z"/></svg>WhatsApp us</span>' +
+              '<span class="panel" style="background:var(--ink);border-color:var(--ink);padding:20px 22px;flex-direction:row;align-items:center;gap:13px;color:#E6DFCE;font-size:15px">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.4"><path d="M3 21l1.7-5A8.2 8.2 0 1 1 8 19.3L3 21z"/></svg>WhatsApp us</span>' +
               '<div class="hcard"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Opening hours</span><span style="font-size:15px;line-height:1.7">Saturday to Thursday<br>10:00 &ndash; 20:00</span></div>' +
               '<div class="hcard"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2)">Email</span><span style="font-size:15px">hello@qeunova.com</span></div>' +
             '</div></div></div>' +
