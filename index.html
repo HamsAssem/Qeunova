@@ -79,6 +79,8 @@ body.home{padding-top:0}
 .sec{padding:72px 0}
 .sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:28px}
 .sec-head h2{font-size:36px;color:var(--text)}
+.sec-head>a{white-space:nowrap;flex:0 0 auto}
+.sec-sub{margin:10px 0 0;font-size:15px;line-height:1.6;color:var(--muted);max-width:54ch}
 .crumb{font-size:12px;color:var(--dim3);padding:0}
 .crumb a{color:var(--dim3)}
 .eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
@@ -138,11 +140,22 @@ body.home{padding-top:0}
 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 
 /* ---------- cards ---------- */
-.brand-tile{border:1px solid var(--lineL);background:var(--card);min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:22px 14px;text-align:center}
-.brand-tile:hover{border-color:var(--ink)}
-.brand-tile .bn{font-family:var(--serif);font-size:20px;color:var(--text)}
+/* --acc and data-mark come from MARK, so every tile carries its own house colour */
+.brand-tile{position:relative;overflow:hidden;border:1px solid var(--lineL);background:var(--card);min-height:206px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:26px 16px 22px;text-align:center;
+  transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
+.brand-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc,var(--gold))}
+/* the brand's initials, set large and faint behind the name */
+.brand-tile::after{content:attr(data-mark);position:absolute;top:-18px;right:-4px;font-family:var(--serif);font-size:84px;line-height:1;
+  color:var(--acc,var(--gold));opacity:.1;pointer-events:none;transition:opacity .25s ease}
+.brand-tile>*{position:relative;z-index:1}
+.brand-tile .bn{font-family:var(--serif);font-size:21px;color:var(--text)}
 .brand-tile .bc{font-size:12px;color:var(--muted)}
-.brand-tile .bt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--goldD);border-top:1px solid var(--lineL);padding-top:9px;margin-top:3px}
+.brand-tile .bt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--goldD);border-top:1px solid var(--lineL);padding-top:10px;margin-top:4px}
+@media (hover:hover){
+  .brand-tile:hover{border-color:var(--acc,var(--ink));transform:translateY(-3px);box-shadow:0 10px 26px rgba(18,17,15,.11)}
+  .brand-tile:hover::after{opacity:.18}
+}
 
 .pcard{border:1px solid var(--lineL2);background:var(--card);display:flex;flex-direction:column}
 .pcard:hover{border-color:var(--ink)}
@@ -388,8 +401,10 @@ body.home{padding-top:0}
   .pname{font-size:13px}
   .now{font-size:17px}
   .was{font-size:11px}
-  .brand-tile{min-height:116px;padding:16px 10px;gap:6px}
-  .brand-tile .bn{font-size:16px}
+  .brand-tile{min-height:158px;padding:20px 12px 18px;gap:6px}
+  .brand-tile .bn{font-size:17px}
+  .brand-tile::after{font-size:60px;top:-12px;right:-2px}
+  .sec-sub{font-size:14px;margin-top:8px}
   .cta-row{gap:12px}
   .cta-row .btn{width:100%}
   .thumbs .thumb{width:64px;height:64px}
@@ -412,7 +427,8 @@ body.home{padding-top:0}
   .page-head h1{font-size:32px}
   .page-head p{margin-top:10px}
   .marquee .brand-tile{flex:0 0 172px;margin-right:12px}
-  .brand-tile{min-height:104px}
+  .brand-tile{min-height:148px}
+  .brand-tile::after{font-size:52px}
   .strip div{padding:14px 6px;font-size:10px;gap:6px}
   .pdp{padding:24px 0;gap:24px}
   .details{gap:28px}
@@ -550,6 +566,17 @@ body.home{padding-top:0}
   var HOUSE = { slug:'histomer', name:'Histomer', count:28, tag:'The house brand',
     blurb:'Italian professional cosmeceuticals, formulated for clinic protocols and sold direct. Peels, boosters, repair creams and post-procedure care.' };
 
+  // Each house's own colour and initials, for the accent rule and the watermark
+  // on its tile. Approximations of the packaging — adjust to the real brand hex.
+  var MARK = {
+    cerave:   ['#0C7DC0','C'],   lrp:      ['#0071B9','LRP'],
+    vichy:    ['#C8102E','V'],   eucerin:  ['#003C7D','E'],
+    bioderma: ['#00875A','B'],   avene:    ['#1C9AD6','A'],
+    uriage:   ['#0F6EB5','U'],   svr:      ['#2B3A67','SVR'],
+    isdin:    ['#0A4DA6','I'],   sesderma: ['#5FA82C','S'],
+    histomer: ['#00A79D','H']
+  };
+
   // shape: [bodyW, bodyH, capW, capH, radius] — drives the line-drawn stand-in image
   var P = [
     ['cerave','Moisturising Cream','454 ml',1450,1090,[62,54,66,12,4]],
@@ -685,7 +712,8 @@ body.home{padding-top:0}
 
   function brandTile(b) {
     var href = b.slug === 'histomer' ? '#/histomer' : '#/collection/' + b.slug;
-    return '<a class="brand-tile" href="' + href + '">' +
+    var m = MARK[b.slug] || ['#C9A24B', b.name.charAt(0).toUpperCase()];
+    return '<a class="brand-tile" href="' + href + '" style="--acc:' + m[0] + '" data-mark="' + m[1] + '">' +
       '<span class="bn">' + b.name + '</span>' +
       '<span class="bc">' + b.count + ' products</span>' +
       '<span class="bt">' + b.tag + '</span></a>';
@@ -751,7 +779,9 @@ body.home{padding-top:0}
     '</section>' +
     trustStrip() +
     '<section class="sand sec"><div class="wrap">' +
-      '<div class="sec-head"><h2>Shop by brand</h2><a href="#/brands">All collections &rarr;</a></div>' +
+      '<div class="sec-head"><div><h2>Shop by brand</h2>' +
+        '<p class="sec-sub">Eleven dermatological houses, every collection priced below Egyptian pharmacy retail.</p></div>' +
+        '<a href="#/brands">All collections &rarr;</a></div>' +
       '</div>' +
       '<div class="marquee"><div class="marquee-track">' + mqRow + '<div style="display:contents" aria-hidden="true">' + mqRow + '</div></div></div>' +
     '</section>' +
