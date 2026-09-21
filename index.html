@@ -173,8 +173,10 @@ body.home{padding-top:0}
 
 .pcard{border:1px solid var(--lineL2);background:var(--card);display:flex;flex-direction:column}
 .pcard:hover{border-color:var(--ink)}
-.pshot{aspect-ratio:4/3.4;background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative}
-.pshot.hist{background:var(--cream2)}
+.pshot{aspect-ratio:4/3.4;background:var(--card);border-bottom:1px solid var(--lineL2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* the Histomer shot is cut from a marble flat-lay, so its panel matches that ground */
+.pshot.hist{background:#DCE8E4;border-bottom-color:#CBDDD8}
+.pimg{width:100%;height:100%;object-fit:contain;padding:12px;display:block}
 .save{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--gold);font-size:10px;letter-spacing:.1em;padding:5px 9px}
 .pbody{padding:18px;display:flex;flex-direction:column;gap:7px;flex:1}
 .pbrand{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--goldD)}
@@ -199,10 +201,17 @@ body.home{padding-top:0}
 /* ---------- product ---------- */
 .pdp{display:flex;gap:64px;padding:56px 0;align-items:flex-start}
 .gal{flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:16px}
-.gmain{aspect-ratio:1/0.9;background:var(--cream);display:flex;align-items:center;justify-content:center;position:relative}
-.gmain.hist{background:var(--cream2)}
+.gmain{aspect-ratio:1/0.9;background:var(--card);border:1px solid var(--lineL2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.gmain.hist{background:#DCE8E4;border-color:#CBDDD8}
+.gmain .pimg{padding:26px}
 .thumbs{display:flex;gap:16px}
-.thumb{width:88px;height:88px;background:var(--cream);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.thumb{width:88px;height:88px;background:var(--card);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden}
+/* one file, four framings — a full shot then three details */
+.timg{width:100%;height:100%;display:block}
+.timg.v0{object-fit:contain;padding:7px}
+.timg.v1{object-fit:cover;object-position:50% 14%}
+.timg.v2{object-fit:cover;object-position:50% 46%}
+.timg.v3{object-fit:cover;object-position:50% 86%}
 .thumb.on{border-color:var(--ink)}
 .pinfo{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:18px}
 .pinfo h1{font-size:40px;color:var(--text);line-height:1.15}
@@ -237,7 +246,8 @@ body.home{padding-top:0}
 .total{border-top:1px solid var(--lineL);padding-top:16px;display:flex;justify-content:space-between;align-items:baseline}
 .total b{font-family:var(--serif);font-size:28px;font-weight:400}
 .citem{display:flex;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--lineL)}
-.cthumb{width:104px;height:104px;flex:0 0 auto;background:var(--card);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center}
+.cthumb{width:104px;height:104px;flex:0 0 auto;background:var(--card);border:1px solid var(--lineL);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cthumb .pimg{padding:9px}
 .fld{display:flex;flex-direction:column;gap:8px}
 .fld label{font-size:13px;color:var(--body)}
 .fld input,.fld select,.fld textarea{height:52px;border:1px solid var(--field);background:var(--card);padding:0 14px}
@@ -615,7 +625,7 @@ body.home{padding-top:0}
     bioderma: ['#00875A','B',   1], avene:    ['#1C9AD6','A',   1],
     uriage:   ['#0F6EB5','U',   1], svr:      ['#2B3A67','SVR', 1],
     isdin:    ['#0A4DA6','I',   1], sesderma: ['#5FA82C','S',   1],
-    histomer: ['#00A79D','H',   0]
+    histomer: ['#00A79D','H',   1]
   };
 
   // shape: [bodyW, bodyH, capW, capH, radius] — drives the line-drawn stand-in image
@@ -732,6 +742,12 @@ body.home{padding-top:0}
   function iconShield(c, w) { return '<svg width="' + (w || 17) + '" height="' + (w || 17) + '" viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="1.5" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg>'; }
   function stars() { return '<svg width="94" height="18" viewBox="0 0 100 20" fill="#836318" aria-hidden="true"><circle cx="8" cy="10" r="4"/><circle cx="28" cy="10" r="4"/><circle cx="48" cy="10" r="4"/><circle cx="68" cy="10" r="4"/><circle cx="88" cy="10" r="4"/></svg>'; }
 
+  // Placeholder imagery: every product borrows its house's shot, so the grids
+  // read as a stocked shop. Swap for real per-product photography later.
+  function photo(p, cls) {
+    return '<img class="' + cls + '" src="images/brand-' + p.brandSlug + '.webp" alt="" loading="lazy">';
+  }
+
   function priceBlock(p) {
     if (p.house) return '<div class="price"><span class="now">' + egp(p.now) + '</span></div>';
     return '<div class="price"><span class="was">' + egp(p.was) + '</span><span class="now">' + egp(p.now) + '</span></div>';
@@ -741,7 +757,7 @@ body.home{padding-top:0}
     return '<a class="pcard" href="#/product/' + p.id + '">' +
       '<div class="pshot' + (p.house ? ' hist' : '') + '">' +
         (p.house ? '' : '<span class="save">&minus;' + p.save + '%</span>') +
-        shot(p.shape, 96, p.house ? '#B3A78E' : '#C0B49C') +
+        photo(p, 'pimg') +
       '</div>' +
       '<div class="pbody">' +
         '<span class="pbrand">' + p.brand + (p.house ? ' &middot; ' + p.line : '') + '</span>' +
@@ -970,7 +986,6 @@ body.home{padding-top:0}
     var p = byId[id];
     if (!p) return pageMissing();
     var related = PRODUCTS.filter(function (x) { return x.id !== p.id && x.house === p.house; }).slice(0, 4);
-    var shapes = [p.shape, [46,98,18,26,4], [40,88,20,12,5], [58,58,62,12,4]];
     var tone = p.house ? '#B3A78E' : '#C0B49C';
 
     var priceArea = p.house
@@ -992,10 +1007,10 @@ body.home{padding-top:0}
       '<div class="gal">' +
         '<div class="gmain' + (p.house ? ' hist' : '') + '">' +
           (p.house ? '' : '<span class="save" style="top:18px;left:18px;font-size:11px;padding:7px 12px">&minus;' + p.save + '%</span>') +
-          shot(p.shape, 200, tone) +
+          photo(p, 'pimg') +
         '</div>' +
-        '<div class="thumbs">' + shapes.map(function (s, i) {
-          return '<span class="thumb' + (i === 0 ? ' on' : '') + '">' + shot(s, 34, '#CCC1A8') + '</span>';
+        '<div class="thumbs">' + [0, 1, 2, 3].map(function (i) {
+          return '<span class="thumb' + (i === 0 ? ' on' : '') + '">' + photo(p, 'timg v' + i) + '</span>';
         }).join('') + '</div>' +
       '</div>' +
       '<div class="pinfo">' +
@@ -1059,7 +1074,7 @@ body.home{padding-top:0}
           '<span>' + t.count + ' items</span><span>Line total</span></div>' +
         t.lines.map(function (l) {
           return '<div class="citem">' +
-            '<span class="cthumb">' + shot(l.p.shape, 44, '#C0B49C') + '</span>' +
+            '<span class="cthumb">' + photo(l.p, 'pimg') + '</span>' +
             '<div style="flex:1;min-width:0">' +
               '<div class="pbrand">' + l.p.brand + '</div>' +
               '<a href="#/product/' + l.p.id + '" style="font-size:17px;color:var(--text);display:block;margin:6px 0">' + l.p.name + '</a>' +
