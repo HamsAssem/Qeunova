@@ -144,17 +144,25 @@ body.home{padding-top:0}
 .brand-tile{position:relative;overflow:hidden;border:1px solid var(--lineL);background:var(--card);min-height:206px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:26px 16px 22px;text-align:center;
   transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease}
-.brand-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc,var(--gold))}
-/* the brand's initials, set large and faint behind the name */
-.brand-tile::after{content:attr(data-mark);position:absolute;top:-18px;right:-4px;font-family:var(--serif);font-size:84px;line-height:1;
+.brand-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc,var(--gold));z-index:3}
+/* the product shot, faded back behind the name */
+.bt-shot{position:absolute;inset:0;z-index:0;width:100%;height:100%;padding:14px 14px 30px;object-fit:contain;
+  opacity:.2;pointer-events:none;transition:opacity .3s ease,transform .5s ease}
+/* brands with no shot yet keep their initials instead */
+.bt-mark{position:absolute;z-index:0;top:-18px;right:-4px;font-family:var(--serif);font-size:84px;line-height:1;
   color:var(--acc,var(--gold));opacity:.1;pointer-events:none;transition:opacity .25s ease}
-.brand-tile>*{position:relative;z-index:1}
+/* the house colour washes over the shot, so the photograph's white ground and
+   the tile's own white stay one tone and no rectangle edge shows through */
+.brand-tile::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 12%,transparent),color-mix(in srgb,var(--acc) 3%,transparent))}
+.brand-tile .bn,.brand-tile .bc,.brand-tile .bt{position:relative;z-index:2}
 .brand-tile .bn{font-family:var(--serif);font-size:21px;color:var(--text)}
 .brand-tile .bc{font-size:12px;color:var(--muted)}
 .brand-tile .bt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--goldD);border-top:1px solid var(--lineL);padding-top:10px;margin-top:4px}
 @media (hover:hover){
   .brand-tile:hover{border-color:var(--acc,var(--ink));transform:translateY(-3px);box-shadow:0 10px 26px rgba(18,17,15,.11)}
-  .brand-tile:hover::after{opacity:.18}
+  .brand-tile:hover .bt-shot{opacity:.34;transform:scale(1.04)}
+  .brand-tile:hover .bt-mark{opacity:.18}
 }
 
 .pcard{border:1px solid var(--lineL2);background:var(--card);display:flex;flex-direction:column}
@@ -403,7 +411,8 @@ body.home{padding-top:0}
   .was{font-size:11px}
   .brand-tile{min-height:158px;padding:20px 12px 18px;gap:6px}
   .brand-tile .bn{font-size:17px}
-  .brand-tile::after{font-size:60px;top:-12px;right:-2px}
+  .bt-mark{font-size:60px;top:-12px;right:-2px}
+  .bt-shot{padding:10px 10px 26px}
   .sec-sub{font-size:14px;margin-top:8px}
   .cta-row{gap:12px}
   .cta-row .btn{width:100%}
@@ -428,7 +437,8 @@ body.home{padding-top:0}
   .page-head p{margin-top:10px}
   .marquee .brand-tile{flex:0 0 172px;margin-right:12px}
   .brand-tile{min-height:148px}
-  .brand-tile::after{font-size:52px}
+  .bt-mark{font-size:52px}
+  .bt-shot{padding:8px 8px 24px;opacity:.24}
   .strip div{padding:14px 6px;font-size:10px;gap:6px}
   .pdp{padding:24px 0;gap:24px}
   .details{gap:28px}
@@ -566,15 +576,16 @@ body.home{padding-top:0}
   var HOUSE = { slug:'histomer', name:'Histomer', count:28, tag:'The house brand',
     blurb:'Italian professional cosmeceuticals, formulated for clinic protocols and sold direct. Peels, boosters, repair creams and post-procedure care.' };
 
-  // Each house's own colour and initials, for the accent rule and the watermark
-  // on its tile. Approximations of the packaging — adjust to the real brand hex.
+  // Each house's colour, its initials, and whether images/brand-<slug>.webp
+  // exists — tiles with a shot show it faded behind the name, the rest fall
+  // back to the initials. Colours approximate the packaging; adjust freely.
   var MARK = {
-    cerave:   ['#0C7DC0','C'],   lrp:      ['#0071B9','LRP'],
-    vichy:    ['#C8102E','V'],   eucerin:  ['#003C7D','E'],
-    bioderma: ['#00875A','B'],   avene:    ['#1C9AD6','A'],
-    uriage:   ['#0F6EB5','U'],   svr:      ['#2B3A67','SVR'],
-    isdin:    ['#0A4DA6','I'],   sesderma: ['#5FA82C','S'],
-    histomer: ['#00A79D','H']
+    cerave:   ['#0C7DC0','C',   1], lrp:      ['#0071B9','LRP', 1],
+    vichy:    ['#C8102E','V',   0], eucerin:  ['#003C7D','E',   1],
+    bioderma: ['#00875A','B',   1], avene:    ['#1C9AD6','A',   1],
+    uriage:   ['#0F6EB5','U',   1], svr:      ['#2B3A67','SVR', 1],
+    isdin:    ['#0A4DA6','I',   1], sesderma: ['#5FA82C','S',   1],
+    histomer: ['#00A79D','H',   0]
   };
 
   // shape: [bodyW, bodyH, capW, capH, radius] — drives the line-drawn stand-in image
@@ -712,8 +723,11 @@ body.home{padding-top:0}
 
   function brandTile(b) {
     var href = b.slug === 'histomer' ? '#/histomer' : '#/collection/' + b.slug;
-    var m = MARK[b.slug] || ['#C9A24B', b.name.charAt(0).toUpperCase()];
-    return '<a class="brand-tile" href="' + href + '" style="--acc:' + m[0] + '" data-mark="' + m[1] + '">' +
+    var m = MARK[b.slug] || ['#C9A24B', b.name.charAt(0).toUpperCase(), 0];
+    var back = m[2]
+      ? '<img class="bt-shot" src="images/brand-' + b.slug + '.webp" alt="" aria-hidden="true" loading="lazy">'
+      : '<span class="bt-mark" aria-hidden="true">' + m[1] + '</span>';
+    return '<a class="brand-tile" href="' + href + '" style="--acc:' + m[0] + '">' + back +
       '<span class="bn">' + b.name + '</span>' +
       '<span class="bc">' + b.count + ' products</span>' +
       '<span class="bt">' + b.tag + '</span></a>';
